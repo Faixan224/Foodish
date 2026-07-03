@@ -1,4 +1,4 @@
--- Foodoo — ensure Row Level Security is ON for every sensitive table.
+-- Foodish — ensure Row Level Security is ON for every sensitive table.
 -- The dishes table had RLS disabled, so its policies were dormant and any
 -- authenticated owner could write into another restaurant's menu. Enabling RLS
 -- activates the "Owners ... own dishes" policies from security-fixes.sql.

@@ -90,7 +90,7 @@ export default function DishForm({ branches, dish, dishBranchIds, skuSuggestion 
         .df-label { display: block; font-size: 13px; font-weight: 700; color: #1A1A1A; margin: 18px 0 8px; }
         .df-label .opt { font-size: 11px; color: #999; font-weight: 400; }
         .df-input, .df-select, .df-textarea { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 12px; padding: 13px 14px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; background: #FAFAFA; transition: border-color 0.18s ease, background 0.18s ease; }
-        .df-input:focus, .df-select:focus, .df-textarea:focus { border-color: #F86D1C; background: #fff; }
+        .df-input:focus, .df-select:focus, .df-textarea:focus { border-color: #FF921C; background: #fff; }
         .df-textarea { resize: none; }
         .df-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
@@ -99,22 +99,22 @@ export default function DishForm({ branches, dish, dishBranchIds, skuSuggestion 
         .photo-x { position: absolute; top: 5px; right: 5px; width: 24px; height: 24px; border-radius: 50%; background: rgba(0,0,0,0.6); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
         .photo-cover { position: absolute; bottom: 5px; left: 5px; background: rgba(248,109,28,0.95); color: #fff; font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 10px; }
         .photo-add { height: 96px; border: 1.5px dashed #DDD; border-radius: 12px; background: #FAFAFA; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; font-size: 11px; color: #999; font-weight: 600; transition: border-color 0.18s ease, color 0.18s ease; }
-        .photo-add:hover { border-color: #F86D1C; color: #F86D1C; }
+        .photo-add:hover { border-color: #FF921C; color: #FF921C; }
         .chips { display: flex; flex-wrap: wrap; gap: 8px; }
         .chip { padding: 10px 16px; border-radius: 50px; border: 1.5px solid #E8E8E8; font-size: 13px; font-weight: 600; color: #555; cursor: pointer; background: #fff; transition: all 0.15s ease; user-select: none; }
-        .chip:hover { border-color: #F86D1C; }
-        .chip.on { background: #FFF3ED; border-color: #F86D1C; color: #F86D1C; }
+        .chip:hover { border-color: #FF921C; }
+        .chip.on { background: #FFF5E6; border-color: #FF921C; color: #FF921C; }
         .chef-row { display: flex; align-items: center; justify-content: space-between; border: 1.5px solid #EBEBEB; border-radius: 14px; padding: 14px 16px; margin-top: 18px; cursor: pointer; transition: border-color 0.18s ease, background 0.18s ease; }
-        .chef-row.on { border-color: #F86D1C; background: #FFF8F4; }
+        .chef-row.on { border-color: #FF921C; background: #FFFAF2; }
         .chef-t { font-size: 14px; font-weight: 700; color: #1A1A1A; }
         .chef-s { font-size: 11px; color: #999; margin-top: 2px; }
         .toggle { width: 44px; height: 24px; border-radius: 20px; background: #E0E0E0; position: relative; transition: background 0.2s ease; flex-shrink: 0; }
-        .toggle.on { background: #F86D1C; }
+        .toggle.on { background: #FF921C; }
         .toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform 0.2s ease; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
         .toggle.on::after { transform: translateX(20px); }
         .din-box { background: #FAFAFA; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #888; margin-top: 18px; line-height: 1.6; }
         .din-box b { color: #1A1A1A; letter-spacing: 1px; }
-        .df-btn { width: 100%; margin-top: 22px; background: #F86D1C; color: #fff; border: none; border-radius: 12px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; }
+        .df-btn { width: 100%; margin-top: 22px; background: #FF921C; color: #fff; border: none; border-radius: 12px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; }
         .df-btn:disabled { opacity: 0.6; cursor: default; }
         .df-err { background: #FDECEA; color: #C0392B; font-size: 13px; border-radius: 10px; padding: 10px 12px; margin-top: 16px; animation: fadeUp 0.25s ease both; }
         .hint { font-size: 11px; color: #AAA; margin-top: 5px; }

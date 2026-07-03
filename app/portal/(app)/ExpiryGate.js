@@ -19,15 +19,15 @@ export default function ExpiryGate({ suspended, expired }) {
         .xg-icon { font-size: 40px; margin-bottom: 12px; }
         .xg-t { font-size: 19px; font-weight: 800; color: #1A1A1A; margin-bottom: 8px; }
         .xg-s { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 20px; }
-        .xg-btn { display: inline-block; background: #F86D1C; color: #fff; text-decoration: none; border-radius: 12px; padding: 13px 26px; font-size: 14px; font-weight: 700; }
+        .xg-btn { display: inline-block; background: #FF921C; color: #fff; text-decoration: none; border-radius: 12px; padding: 13px 26px; font-size: 14px; font-weight: 700; }
       `}</style>
       <div className="xg-card">
         <div className="xg-icon">{suspended ? '⛔' : '⏰'}</div>
         <div className="xg-t">{suspended ? 'Your listing is paused' : 'Payment overdue'}</div>
         <div className="xg-s">
           {suspended
-            ? 'Your dishes are hidden from Foodoo because of an unpaid bill. Clear the pending amount and everything comes right back — ratings and rankings included.'
-            : 'Your monthly bill is past its due date (the 10th). Please clear it soon — unpaid listings are hidden from Foodoo after a short grace period.'}
+            ? 'Your dishes are hidden from Foodish because of an unpaid bill. Clear the pending amount and everything comes right back — ratings and rankings included.'
+            : 'Your monthly bill is past its due date (the 10th). Please clear it soon — unpaid listings are hidden from Foodish after a short grace period.'}
         </div>
         <a className="xg-btn" href="/portal/billing">View billing →</a>
       </div>

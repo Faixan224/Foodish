@@ -44,17 +44,17 @@ export default function IssueCodeForm() {
         .ic-title { font-size: 15px; font-weight: 800; color: #1A1A1A; margin-bottom: 16px; }
         .ic-label { display: block; font-size: 12px; font-weight: 600; color: #555; margin: 14px 0 6px; }
         .ic-input, .ic-select { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 10px; padding: 11px 12px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; background: #FAFAFA; transition: border-color 0.18s ease, background 0.18s ease; }
-        .ic-input:focus, .ic-select:focus { border-color: #F86D1C; background: #fff; }
+        .ic-input:focus, .ic-select:focus { border-color: #FF921C; background: #fff; }
         .ic-input.prefix { text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        .ic-btn { width: 100%; margin-top: 18px; background: #F86D1C; color: #fff; border: none; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; }
+        .ic-btn { width: 100%; margin-top: 18px; background: #FF921C; color: #fff; border: none; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; }
         .ic-btn:disabled { opacity: 0.6; cursor: default; }
         .ic-err { background: #FDECEA; color: #C0392B; font-size: 13px; border-radius: 10px; padding: 10px 12px; margin-top: 14px; animation: fadeUp 0.25s ease both; }
         .ic-ok { background: #E8F5E9; color: #2E7D32; font-size: 13px; border-radius: 10px; padding: 12px; margin-top: 14px; animation: fadeUp 0.25s ease both; }
         .ic-ok b { letter-spacing: 1px; font-size: 15px; }
         .sug-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
         .sug { padding: 5px 11px; border-radius: 20px; border: 1.5px solid #E8E8E8; background: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.8px; color: #555; cursor: pointer; transition: all 0.15s ease; animation: fadeUp 0.25s ease both; }
-        .sug:hover { border-color: #F86D1C; color: #F86D1C; }
-        .sug.on { background: #FFF3ED; border-color: #F86D1C; color: #F86D1C; }
+        .sug:hover { border-color: #FF921C; color: #FF921C; }
+        .sug.on { background: #FFF5E6; border-color: #FF921C; color: #FF921C; }
         .sug-hint { font-size: 11px; color: #AAA; margin-top: 6px; }
       `}</style>
 

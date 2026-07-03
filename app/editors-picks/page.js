@@ -27,17 +27,17 @@ export default async function EditorsPicksPage() {
         .dish-img-wrap { position: relative; height: 160px; background: #F5F5F5; overflow: hidden; }
         .dish-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .dish-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1A1A1A; }
-        .dish-rank-badge { position: absolute; top: 10px; left: 10px; background: #FF5B00; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 8px; }
+        .dish-rank-badge { position: absolute; top: 10px; left: 10px; background: #FF921C; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 8px; }
         .dish-info { padding: 10px 12px 12px; }
         .dish-name { font-size: 14px; font-weight: 700; color: #1A1A1A; line-height: 1.3; }
         .dish-rating-row { display: flex; align-items: center; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
-        .dish-stars { color: #FF5B00; font-size: 13px; }
+        .dish-stars { color: #FF921C; font-size: 13px; }
         .dish-rating-val { font-size: 13px; font-weight: 700; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-rest-dot { color: #CCC; font-size: 12px; }
         .dish-rest-name { font-size: 12px; color: #888; }
         .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
-        .dish-category-tag { font-size: 11px; color: #F86D1C; background: #FFF3ED; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+        .dish-category-tag { font-size: 11px; color: #FF921C; background: #FFF5E6; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
         .dish-price { font-size: 12px; color: #555; font-weight: 500; }
         .empty { text-align: center; padding: 48px 0; color: #BBB; font-size: 14px; }
         .bottom-nav { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); background: #fff; border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px; z-index: 100; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border: 1px solid #F0F0F0; }

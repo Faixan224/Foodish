@@ -1,4 +1,4 @@
--- Foodoo — full database schema (all phases, future-ready)
+-- Foodish — full database schema (all phases, future-ready)
 -- Apply in Supabase SQL Editor. Run PART 1 first, then PART 2.
 --
 -- NOTE: this is the originally-designed schema. The live DB has since evolved

@@ -18,15 +18,15 @@ const StarRating = ({ value, onChange, size = 32, showLabel = false }) => {
             onClick={() => onChange(s)}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2, lineHeight: 1 }}>
             <svg width={size} height={size} viewBox="0 0 24 24"
-              fill={s <= active ? '#F86D1C' : 'none'}
-              stroke={s <= active ? '#F86D1C' : '#DDD'}
+              fill={s <= active ? '#FF921C' : 'none'}
+              stroke={s <= active ? '#FF921C' : '#DDD'}
               strokeWidth="1.5">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
           </button>
         ))}
       </div>
-      <div style={{ fontSize: 13, color: '#F86D1C', fontWeight: 600, marginTop: 8, textAlign: 'center', height: 18, lineHeight: '18px' }}>
+      <div style={{ fontSize: 13, color: '#FF921C', fontWeight: 600, marginTop: 8, textAlign: 'center', height: 18, lineHeight: '18px' }}>
         {showLabel && active > 0 ? `${labels[active]} — You rated ${active} out of 5` : '\u00A0'}
       </div>
     </div>
@@ -61,11 +61,20 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
   const [qrVisit, setQrVisit] = useState(null) // { n: restaurant, br: branch } from the scan hint cookie
   const photoInputRef = useRef(null)
 
+  // Lock the page scroll while the review sheet or photo lightbox is open,
+  // so the dish page doesn't scroll behind the panel.
+  useEffect(() => {
+    const lock = showReview || !!lightbox
+    const els = [document.documentElement, document.body]
+    els.forEach(el => { el.style.overflow = lock ? 'hidden' : '' })
+    return () => { els.forEach(el => { el.style.overflow = '' }) }
+  }, [showReview, lightbox])
+
   // Read the (untrusted, display-only) QR hint cookie so we can show a
   // "Verified visit" note. The real verification happens server-side on submit.
   useEffect(() => {
     try {
-      const m = document.cookie.match(/(?:^|; )foodoo_qrv_ui=([^;]+)/)
+      const m = document.cookie.match(/(?:^|; )foodish_qrv_ui=([^;]+)/)
       if (m) setQrVisit(JSON.parse(decodeURIComponent(m[1])))
     } catch {}
   }, [])
@@ -73,7 +82,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
   // Load the current device's profile so we can show your own DP on your reviews
   useEffect(() => {
     try {
-      const p = JSON.parse(localStorage.getItem('foodoo_profile') || 'null')
+      const p = JSON.parse(localStorage.getItem('foodish_profile') || 'null')
       if (!p) return
       const contact = p.phone || p.email
       if (contact) setMyHash(btoa(contact).slice(0, 32))
@@ -118,12 +127,12 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
   }
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('foodoo_saved') || '[]')
+    const saved = JSON.parse(localStorage.getItem('foodish_saved') || '[]')
     setIsSaved(saved.includes(dish.id))
   }, [dish.id])
 
   const toggleSave = () => {
-    const saved = JSON.parse(localStorage.getItem('foodoo_saved') || '[]')
+    const saved = JSON.parse(localStorage.getItem('foodish_saved') || '[]')
     let updated
     if (saved.includes(dish.id)) {
       updated = saved.filter(id => id !== dish.id)
@@ -132,7 +141,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
       updated = [...saved, dish.id]
       setIsSaved(true)
     }
-    localStorage.setItem('foodoo_saved', JSON.stringify(updated))
+    localStorage.setItem('foodish_saved', JSON.stringify(updated))
   }
 
   const tagOptions = [
@@ -152,7 +161,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
   // have to re-enter it. Phone takes priority over email.
   const prefillFromProfile = () => {
     try {
-      const saved = JSON.parse(localStorage.getItem('foodoo_profile') || 'null')
+      const saved = JSON.parse(localStorage.getItem('foodish_profile') || 'null')
       if (!saved) return
       if (saved.name) setNickname(saved.name)
       const contact = saved.phone || saved.email
@@ -181,7 +190,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
     }
 
     let times = []
-    try { times = JSON.parse(localStorage.getItem('foodoo_review_times') || '[]') } catch {}
+    try { times = JSON.parse(localStorage.getItem('foodish_review_times') || '[]') } catch {}
     // 3 reviews / 24h
     const day = times.filter(t => now - t < 86400000).sort((a, b) => a - b)
     if (day.length >= 3) {
@@ -226,13 +235,13 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
       const now = Date.now()
       localStorage.setItem('review_' + dish.id, now.toString())
       let times = []
-      try { times = JSON.parse(localStorage.getItem('foodoo_review_times') || '[]') } catch {}
+      try { times = JSON.parse(localStorage.getItem('foodish_review_times') || '[]') } catch {}
       times = times.filter(t => now - t < 2592000000)
       times.push(now)
-      localStorage.setItem('foodoo_review_times', JSON.stringify(times))
+      localStorage.setItem('foodish_review_times', JSON.stringify(times))
       setWasVerified(!!res?.verified)
       setSubmitted(true)
-      window.dispatchEvent(new Event('foodoo:rank-check'))
+      window.dispatchEvent(new Event('foodish:rank-check'))
     }
   }
 
@@ -267,27 +276,27 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
         .card { background: #fff; border-radius: 24px 24px 0 0; margin-top: -20px; position: relative; padding: 22px 20px 0; }
         .dish-name { font-size: 22px; font-weight: 800; color: #1A1A1A; line-height: 1.2; flex: 1; }
         .rest-link { display: inline-flex; align-items: center; gap: 5px; text-decoration: none; margin-bottom: 16px; margin-top: 4px; }
-        .rest-link-name { font-size: 14px; color: #F86D1C; font-weight: 600; }
+        .rest-link-name { font-size: 14px; color: #FF921C; font-weight: 600; }
         .info-pills { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
         .info-pill { display: flex; align-items: center; gap: 8px; background: #F7F7F7; border-radius: 12px; padding: 10px 14px; }
         .pill-label { font-size: 10px; color: #999; margin-top: 1px; }
         .pill-value { font-size: 13px; font-weight: 700; color: #1A1A1A; }
         .desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 6px; }
-        .read-more { font-size: 14px; color: #F86D1C; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 20px; display: block; }
+        .read-more { font-size: 14px; color: #FF921C; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 20px; display: block; }
         .divider { height: 8px; background: #F7F7F7; margin: 0 -20px 22px; }
         .sec-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
         .sec-title { font-size: 17px; font-weight: 800; color: #1A1A1A; }
-        .see-all { font-size: 13px; color: #F86D1C; font-weight: 600; text-decoration: none; background: none; border: none; cursor: pointer; }
+        .see-all { font-size: 13px; color: #FF921C; font-weight: 600; text-decoration: none; background: none; border: none; cursor: pointer; }
         .ratings-wrap { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; }
         .big-num { font-size: 48px; font-weight: 900; color: #1A1A1A; line-height: 1; }
         .big-stars { display: flex; gap: 3px; justify-content: center; margin: 6px 0 4px; }
-        .bstar { color: #F86D1C; font-size: 15px; }
+        .bstar { color: #FF921C; font-size: 15px; }
         .bstar.e { color: #DDD; }
         .bars { flex: 1; }
         .bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-        .bar-lbl { font-size: 12px; color: #F86D1C; width: 10px; flex-shrink: 0; }
+        .bar-lbl { font-size: 12px; color: #FF921C; width: 10px; flex-shrink: 0; }
         .bar-track { flex: 1; height: 6px; background: #F0F0F0; border-radius: 3px; overflow: hidden; }
-        .bar-fill { height: 100%; background: #F86D1C; border-radius: 3px; }
+        .bar-fill { height: 100%; background: #FF921C; border-radius: 3px; }
         .bar-pct { font-size: 11px; color: #999; width: 28px; text-align: right; flex-shrink: 0; }
         .rev-card { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #F5F5F5; }
         .rev-top-row { display: flex; gap: 12px; margin-bottom: 8px; align-items: flex-start; }
@@ -297,15 +306,15 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
         .rev-name { font-size: 14px; font-weight: 700; color: #1A1A1A; }
         .rev-time { font-size: 11px; color: #BBB; margin-bottom: 4px; }
         .rev-stars { display: flex; gap: 2px; }
-        .rstar { color: #F86D1C; font-size: 13px; }
+        .rstar { color: #FF921C; font-size: 13px; }
         .rstar.e { color: #DDD; }
         .rev-text { font-size: 14px; color: #444; line-height: 1.5; margin-top: 8px; margin-bottom: 10px; }
         .rev-bottom { display: flex; align-items: center; justify-content: flex-end; }
         .like-btn { display: flex; align-items: center; gap: 6px; background: #fff; border: 1.5px solid #E8E8E8; border-radius: 20px; cursor: pointer; font-size: 13px; color: #555; padding: 6px 14px; font-weight: 500; transition: all 0.15s; }
-        .like-btn:hover { border-color: #F86D1C; color: #F86D1C; }
+        .like-btn:hover { border-color: #FF921C; color: #FF921C; }
         .like-btn.liked { border-color: #E53935; color: #E53935; background: #FFF5F5; }
         .vbadge { display: inline-flex; align-items: center; gap: 4px; background: #E8F5E9; color: #2E7D32; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
-        .show-more-btn { width: 100%; padding: 13px; border: 1.5px solid #F86D1C; border-radius: 12px; background: #fff; color: #F86D1C; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 4px; margin-bottom: 8px; }
+        .show-more-btn { width: 100%; padding: 13px; border: 1.5px solid #FF921C; border-radius: 12px; background: #fff; color: #FF921C; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 4px; margin-bottom: 8px; }
         .sim-scroll { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
         .sim-scroll::-webkit-scrollbar { display: none; }
         .sim-card { flex-shrink: 0; width: 150px; text-decoration: none; display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
@@ -313,19 +322,19 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
         .sim-img img { width: 100%; height: 100%; object-fit: cover; }
         .sim-info { padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #F0F0F0; padding: 10px 20px 28px; z-index: 99; box-shadow: 0 -4px 20px rgba(0,0,0,0.06); }
-        .rate-btn { width: 100%; background: #F86D1C; color: #fff; border: none; border-radius: 14px; padding: 15px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        .rate-btn { width: 100%; background: #FF921C; color: #fff; border: none; border-radius: 14px; padding: 15px; font-size: 16px; font-weight: 700; cursor: pointer; }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
         .overlay.open { opacity: 1; pointer-events: all; }
         .lb-body { display: flex; flex-direction: column; overflow: auto; }
         @media (min-width: 700px) { .lb-body { flex-direction: row; } }
-        .sheet { position: fixed; bottom: -100%; left: 0; right: 0; background: #fff; border-radius: 24px 24px 0 0; z-index: 201; transition: bottom 0.35s cubic-bezier(0.32,0.72,0,1); max-height: 94vh; display: flex; flex-direction: column; overflow: hidden; }
+        .sheet { position: fixed; bottom: -100%; left: 0; right: 0; background: #fff; border-radius: 24px 24px 0 0; z-index: 201; transition: bottom 0.35s cubic-bezier(0.32,0.72,0,1); max-height: 86dvh; display: flex; flex-direction: column; overflow: hidden; }
         .sheet.open { bottom: 0; }
         .sheet-handle { width: 40px; height: 4px; background: #E0E0E0; border-radius: 2px; margin: 12px auto 0; flex-shrink: 0; }
         .sheet-hdr { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 20px 14px; border-bottom: 1px solid #F5F5F5; flex-shrink: 0; }
         .sheet-title { font-size: 17px; font-weight: 800; color: #1A1A1A; }
         .sheet-sub { font-size: 13px; color: #888; margin-top: 2px; }
         .close-btn { width: 32px; height: 32px; border-radius: 50%; background: #F5F5F5; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .sheet-body { flex: 1; overflow-y: auto; padding: 20px; scrollbar-width: thin; scrollbar-color: #E0E0E0 transparent; }
+        .sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 20px; scrollbar-width: thin; scrollbar-color: #E0E0E0 transparent; }
         .sheet-body::-webkit-scrollbar { width: 4px; }
         .sheet-body::-webkit-scrollbar-thumb { background: #E0E0E0; border-radius: 4px; }
         .sheet-footer { flex-shrink: 0; background: #fff; padding: 12px 20px 24px; border-top: 1px solid #F5F5F5; }
@@ -337,11 +346,11 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
         .aspect-name { font-size: 14px; color: #1A1A1A; font-weight: 500; }
         .tags-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
         .tag { padding: 10px 14px; border-radius: 50px; border: 1.5px solid #E8E8E8; font-size: 13px; font-weight: 500; color: #555; cursor: pointer; background: #fff; text-align: center; transition: all 0.15s; }
-        .tag.active { background: #FFF3ED; border-color: #F86D1C; color: #F86D1C; font-weight: 600; }
+        .tag.active { background: #FFF5E6; border-color: #FF921C; color: #FF921C; font-weight: 600; }
         textarea { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 12px; padding: 14px; font-size: 14px; color: #1A1A1A; outline: none; resize: none; font-family: inherit; background: #FAFAFA; }
-        textarea:focus { border-color: #F86D1C; background: #fff; }
+        textarea:focus { border-color: #FF921C; background: #fff; }
         .text-input { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 12px; padding: 14px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; background: #FAFAFA; display: block; }
-        .text-input:focus { border-color: #F86D1C; background: #fff; }
+        .text-input:focus { border-color: #FF921C; background: #fff; }
         .text-input::placeholder { color: #BBB; }
         .photo-box { border: 1.5px dashed #DDD; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 20px; background: #FAFAFA; }
         .photo-box-text { font-size: 14px; font-weight: 600; color: #1A1A1A; }
@@ -350,9 +359,9 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
         .phone-row.verified { border-color: #4CAF50; background: #F1F8F1; }
         .phone-left { display: flex; align-items: center; gap: 10px; }
         .phone-label { font-size: 14px; font-weight: 600; color: #1A1A1A; }
-        .phone-input { width: 100%; border: 1.5px solid #F86D1C; border-radius: 14px; padding: 14px 16px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; margin-bottom: 8px; display: block; background: #fff; }
+        .phone-input { width: 100%; border: 1.5px solid #FF921C; border-radius: 14px; padding: 14px 16px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; margin-bottom: 8px; display: block; background: #fff; }
         .phone-input::placeholder { color: #BBB; }
-        .submit-btn { width: 100%; background: #F86D1C; color: #fff; border: none; border-radius: 14px; padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        .submit-btn { width: 100%; background: #FF921C; color: #fff; border: none; border-radius: 14px; padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer; }
         .submit-btn:disabled { opacity: 0.6; }
         .error-msg { color: #E53935; font-size: 13px; text-align: center; margin-bottom: 12px; }
         @media (min-width: 768px) {
@@ -407,7 +416,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
           {dish.restaurants && (
             <a href={'/restaurant/' + dish.restaurants.slug} className="rest-link" style={{ marginBottom: 4 }}>
               <span className="rest-link-name">{dish.restaurants.name}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#F86D1C" strokeWidth="2" strokeLinecap="round"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/></svg>
             </a>
           )}
 
@@ -424,7 +433,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
 
           {dish.total_reviews > 0 && rating > 0 && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#F86D1C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF921C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <span style={{ fontSize: 15, fontWeight: 700, color: '#1A1A1A' }}>{rating.toFixed(1)}</span>
               <span style={{ fontSize: 13, color: '#888' }}>({dish.total_reviews})</span>
             </div>
@@ -433,13 +442,13 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
           {(rank > 0 && rank <= 10) || dish.is_chef_special ? (
             <div style={{ marginBottom: 14, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {rank > 0 && rank <= 10 && (
-                <span style={{ background: '#F86D1C', color: '#fff', fontSize: 12, fontWeight: 700, padding: '5px 12px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ background: '#FF921C', color: '#fff', fontSize: 12, fontWeight: 700, padding: '5px 12px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
                   #{rank} in Editor's Picks
                 </span>
               )}
               {dish.is_chef_special && (
                 <span style={{ background: '#1A1A1A', color: '#fff', fontSize: 12, fontWeight: 700, padding: '5px 12px', borderRadius: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  👨‍🍳 Chef's&nbsp;<span style={{ color: '#F86D1C' }}>Special</span>
+                  👨‍🍳 Chef's&nbsp;<span style={{ color: '#FF921C' }}>Special</span>
                 </span>
               )}
             </div>
@@ -449,14 +458,14 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
             {dish.price && (
               <div className="info-pill">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="#F86D1C" strokeWidth="1.5"/>
-                  <text x="12" y="12" textAnchor="middle" dominantBaseline="central" fontSize="6" fontWeight="900" fill="#F86D1C" fontFamily="Arial, sans-serif">Rs</text>
+                  <circle cx="12" cy="12" r="9" stroke="#FF921C" strokeWidth="1.5"/>
+                  <text x="12" y="12" textAnchor="middle" dominantBaseline="central" fontSize="6" fontWeight="900" fill="#FF921C" fontFamily="Arial, sans-serif">Rs</text>
                 </svg>
                 <div><div className="pill-value">Rs. {dish.price}</div><div className="pill-label">Price</div></div>
               </div>
             )}
             <div className="info-pill">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#F86D1C" strokeWidth="1.5"/><path d="M12 7v5l3 3" stroke="#F86D1C" strokeWidth="1.5" strokeLinecap="round"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF921C" strokeWidth="1.5"/><path d="M12 7v5l3 3" stroke="#FF921C" strokeWidth="1.5" strokeLinecap="round"/></svg>
               <div><div className="pill-value">20-30 min</div><div className="pill-label">Prep time</div></div>
             </div>
             {dish.restaurants?.cuisine_type?.[0] && (
@@ -522,8 +531,8 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                     </div>
                     {r.comment && <div className="rev-text">{r.comment}</div>}
                     {r.reply && (
-                      <div style={{ background: '#FAFAFA', borderLeft: '3px solid #F86D1C', borderRadius: '0 10px 10px 0', padding: '10px 12px', marginTop: 8 }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: '#F86D1C', marginBottom: 3 }}>
+                      <div style={{ background: '#FAFAFA', borderLeft: '3px solid #FF921C', borderRadius: '0 10px 10px 0', padding: '10px 12px', marginTop: 8 }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: '#FF921C', marginBottom: 3 }}>
                           Response from {dish.restaurants?.name || 'the restaurant'}
                         </div>
                         <div style={{ fontSize: 13, color: '#555', lineHeight: 1.5 }}>{r.reply.reply_text}</div>
@@ -570,7 +579,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                   <a key={d.id} href={'/dish/' + d.id} className="sim-card">
                     <div className="sim-img" style={{ position: 'relative' }}>
                       {d.rank > 0 && (
-                        <div style={{ position: 'absolute', top: 6, left: 6, background: '#F86D1C', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 7px', borderRadius: 6 }}>#{d.rank}</div>
+                        <div style={{ position: 'absolute', top: 6, left: 6, background: '#FF921C', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 7px', borderRadius: 6 }}>#{d.rank}</div>
                       )}
                       {d.photo_url
                         ? <img src={d.photo_url} alt={d.name} loading="lazy"/>
@@ -584,7 +593,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                          <span style={{ color: '#F86D1C', fontSize: 13 }}>★</span>
+                          <span style={{ color: '#FF921C', fontSize: 13 }}>★</span>
                           <span style={{ fontSize: 13, fontWeight: 700, color: '#1A1A1A' }}>{d.avg_rating > 0 ? d.avg_rating.toFixed(1) : 'New'}</span>
                         </div>
                         {d.price && <span style={{ fontSize: 12, fontWeight: 800, color: '#1A1A1A' }}>Rs. {d.price}</span>}
@@ -623,7 +632,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                     </span>
                   )}
                 </div>
-                <div style={{ color: '#F86D1C', fontSize: 15, letterSpacing: 1 }}>{stars5.map(s => <span key={s} style={{ color: s <= lightbox.stars ? '#F86D1C' : '#DDD' }}>★</span>)}</div>
+                <div style={{ color: '#FF921C', fontSize: 15, letterSpacing: 1 }}>{stars5.map(s => <span key={s} style={{ color: s <= lightbox.stars ? '#FF921C' : '#DDD' }}>★</span>)}</div>
                 <div style={{ fontSize: 12, color: '#999', margin: '5px 0 14px' }}>{new Date(lightbox.created_at).toLocaleDateString('en-PK', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
                 {lightbox.comment && <div style={{ fontSize: 14, color: '#333', lineHeight: 1.55 }}>{lightbox.comment}</div>}
               </div>
@@ -642,8 +651,8 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
             <div style={{ fontSize: 52, marginBottom: 16 }}>⏰</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: '#1A1A1A', marginBottom: 8 }}>{blockInfo.title}</div>
             <div style={{ fontSize: 14, color: '#888', marginBottom: 8 }}>{blockInfo.sub}</div>
-            <div style={{ fontSize: 15, color: '#F86D1C', fontWeight: 700, marginBottom: 28 }}>{blockInfo.wait}</div>
-            <button onClick={resetSheet} style={{ background: '#F86D1C', color: '#fff', border: 'none', borderRadius: 14, padding: '14px', fontWeight: 700, fontSize: 15, cursor: 'pointer', width: '100%' }}>
+            <div style={{ fontSize: 15, color: '#FF921C', fontWeight: 700, marginBottom: 28 }}>{blockInfo.wait}</div>
+            <button onClick={resetSheet} style={{ background: '#FF921C', color: '#fff', border: 'none', borderRadius: 14, padding: '14px', fontWeight: 700, fontSize: 15, cursor: 'pointer', width: '100%' }}>
               Got it
             </button>
           </div>
@@ -667,7 +676,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6 }}>
                   <div style={{ display: 'flex', gap: 2 }}>
                     {[1,2,3,4,5].map(s => (
-                      <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill={s <= stars ? '#F86D1C' : '#DDD'}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill={s <= stars ? '#FF921C' : '#DDD'}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     ))}
                   </div>
                   <span style={{ fontSize: 12, background: '#E8F5E9', color: '#2E7D32', padding: '2px 8px', borderRadius: 20, fontWeight: 600 }}>{wasVerified ? '✓ Verified (3x)' : 'Review Submitted'}</span>
@@ -682,7 +691,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                 </div>
               ))}
             </div>
-            <button onClick={() => { resetSheet(); window.location.reload(); }} style={{ background: '#F86D1C', color: '#fff', border: 'none', borderRadius: 14, padding: '15px', fontWeight: 700, fontSize: 16, cursor: 'pointer', width: '100%' }}>
+            <button onClick={() => { resetSheet(); window.location.reload(); }} style={{ background: '#FF921C', color: '#fff', border: 'none', borderRadius: 14, padding: '15px', fontWeight: 700, fontSize: 16, cursor: 'pointer', width: '100%' }}>
               Done
             </button>
           </div>
@@ -765,10 +774,10 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
                   </div>
                 </div>
               ) : (
-                <div style={{ background: '#FFF3ED', border: '1px solid #FBD9C4', borderRadius: 12, padding: '12px 14px', display: 'flex', gap: 10, marginBottom: 16 }}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 1 }}><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="#C24A12" strokeWidth="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="#C24A12" strokeWidth="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="#C24A12" strokeWidth="1.6"/><path d="M14 14h2v2M20 14v6M16 20h4" stroke="#C24A12" strokeWidth="1.6" strokeLinecap="round"/></svg>
+                <div style={{ background: '#FFF5E6', border: '1px solid #FFDFAD', borderRadius: 12, padding: '12px 14px', display: 'flex', gap: 10, marginBottom: 16 }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 1 }}><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="#C97708" strokeWidth="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="#C97708" strokeWidth="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="#C97708" strokeWidth="1.6"/><path d="M14 14h2v2M20 14v6M16 20h4" stroke="#C97708" strokeWidth="1.6" strokeLinecap="round"/></svg>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: '#9A3B10' }}>Want a Verified badge?</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#995B05' }}>Want a Verified badge?</div>
                     <div style={{ fontSize: 12, color: '#B45A2A', lineHeight: 1.5 }}>Scan the QR code at your table — verified reviews count 3x more.</div>
                   </div>
                 </div>

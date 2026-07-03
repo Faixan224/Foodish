@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Partner with Foodoo — For Restaurants',
-  description: 'List your dishes on Foodoo, get verified QR reviews, and grow with dish-level ratings.',
+  title: 'Partner with Foodish — For Restaurants',
+  description: 'List your dishes on Foodish, get verified QR reviews, and grow with dish-level ratings.',
 }
 
 const EMAIL = 'faixanyasin@gmail.com'
@@ -20,9 +20,9 @@ export default function PartnerPage() {
         .top-title { font-size: 18px; font-weight: 800; color: #1A1A1A; }
         .wrap { max-width: 720px; margin: 0 auto; padding: 28px 20px; }
         .hero { text-align: center; padding: 24px 0 30px; animation: fadeUp 0.4s ease both; }
-        .hero-badge { display: inline-block; background: #FFF3ED; color: #F86D1C; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 16px; }
+        .hero-badge { display: inline-block; background: #FFF5E6; color: #FF921C; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 16px; }
         .hero-title { font-size: 30px; font-weight: 900; color: #1A1A1A; line-height: 1.2; letter-spacing: -0.5px; }
-        .hero-title span { color: #F86D1C; }
+        .hero-title span { color: #FF921C; }
         .hero-sub { font-size: 15px; color: #777; line-height: 1.7; margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; }
         .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 34px; animation: fadeUp 0.4s ease 0.08s both; }
         @media (max-width: 640px) { .perks { grid-template-columns: 1fr; } }
@@ -35,7 +35,7 @@ export default function PartnerPage() {
         .steps { margin-bottom: 34px; animation: fadeUp 0.4s ease 0.14s both; }
         .step { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #F5F5F5; }
         .step:last-child { border-bottom: none; }
-        .step-num { width: 30px; height: 30px; border-radius: 50%; background: #FFF3ED; color: #F86D1C; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .step-num { width: 30px; height: 30px; border-radius: 50%; background: #FFF5E6; color: #FF921C; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .step-t { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .step-s { font-size: 13px; color: #888; line-height: 1.6; margin-top: 2px; }
         .contact-card { background: #1A1A1A; border-radius: 20px; padding: 28px 24px; text-align: center; animation: fadeUp 0.4s ease 0.2s both; }
@@ -45,10 +45,10 @@ export default function PartnerPage() {
         .c-btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 14px; font-weight: 700; padding: 13px 22px; border-radius: 12px; transition: transform 0.15s ease, opacity 0.15s ease; }
         .c-btn:hover { transform: translateY(-1px); }
         .c-btn.wa { background: #25D366; color: #fff; }
-        .c-btn.mail { background: #F86D1C; color: #fff; }
+        .c-btn.mail { background: #FF921C; color: #fff; }
         .c-phone { font-size: 13px; color: #888; margin-top: 16px; }
         .signin-row { text-align: center; margin-top: 26px; font-size: 14px; color: #888; animation: fadeUp 0.4s ease 0.26s both; }
-        .signin-row a { color: #F86D1C; font-weight: 700; text-decoration: none; }
+        .signin-row a { color: #FF921C; font-weight: 700; text-decoration: none; }
       `}</style>
 
       <div className="page">
@@ -61,10 +61,10 @@ export default function PartnerPage() {
 
         <div className="wrap">
           <div className="hero">
-            <div className="hero-badge">🤝 PARTNER WITH FOODOO</div>
+            <div className="hero-badge">🤝 PARTNER WITH FOODISH</div>
             <div className="hero-title">Your dishes, rated &amp; <span>discovered</span></div>
             <div className="hero-sub">
-              Foodoo is where food lovers pick a dish before they order. Get your menu
+              Foodish is where food lovers pick a dish before they order. Get your menu
               rated dish-by-dish, collect verified reviews from real diners at your
               tables, and manage everything from your own portal.
             </div>
@@ -128,7 +128,7 @@ export default function PartnerPage() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.9-1.4A10 10 0 1012 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .1 0 .8-.1 1.6z"/></svg>
                 WhatsApp
               </a>
-              <a className="c-btn mail" href={'mailto:' + EMAIL + '?subject=Foodoo%20Partnership'}>
+              <a className="c-btn mail" href={'mailto:' + EMAIL + '?subject=Foodish%20Partnership'}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="2"/></svg>
                 Email
               </a>

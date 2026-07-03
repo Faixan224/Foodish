@@ -25,7 +25,7 @@ export default async function AdminRestaurantDetail({ params }) {
   if (!r) {
     return (
       <div style={{ color: '#999', fontSize: 14 }}>
-        Restaurant not found. <a href="/admin/restaurants" style={{ color: '#F86D1C' }}>← Back to list</a>
+        Restaurant not found. <a href="/admin/restaurants" style={{ color: '#FF921C' }}>← Back to list</a>
       </div>
     )
   }
@@ -75,10 +75,10 @@ export default async function AdminRestaurantDetail({ params }) {
   return (
     <div>
       <style>{`
-        .d-back { font-size: 13px; color: #F86D1C; text-decoration: none; font-weight: 600; }
+        .d-back { font-size: 13px; color: #FF921C; text-decoration: none; font-weight: 600; }
         .d-head { display: flex; align-items: center; gap: 14px; margin: 14px 0 4px; }
         .d-title { font-size: 24px; font-weight: 800; color: #1A1A1A; }
-        .d-prefix { font-size: 11px; font-weight: 800; background: #FFF3ED; color: #F86D1C; padding: 3px 9px; border-radius: 6px; letter-spacing: 0.5px; }
+        .d-prefix { font-size: 11px; font-weight: 800; background: #FFF5E6; color: #FF921C; padding: 3px 9px; border-radius: 6px; letter-spacing: 0.5px; }
         .pill { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; display: inline-block; }
         .pill.live { background: #E8F5E9; color: #2E7D32; }
         .pill.off { background: #FDECEA; color: #C0392B; }
@@ -86,7 +86,7 @@ export default async function AdminRestaurantDetail({ params }) {
         .pill.used { background: #F3F3F3; color: #999; }
         .pill.revoked { background: #FDECEA; color: #C0392B; }
         .d-sub { font-size: 13px; color: #999; margin-bottom: 22px; }
-        .d-sub a { color: #F86D1C; text-decoration: none; font-weight: 600; }
+        .d-sub a { color: #FF921C; text-decoration: none; font-weight: 600; }
         .d-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
         .d-stat { background: #fff; border: 1px solid #EEE; border-radius: 12px; padding: 14px 16px; }
         .d-val { font-size: 22px; font-weight: 900; color: #1A1A1A; }
@@ -98,7 +98,7 @@ export default async function AdminRestaurantDetail({ params }) {
         .row.hdr { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.4px; padding: 9px 18px; }
         .b-cols { grid-template-columns: 1.3fr 1fr 0.8fr 1fr 0.7fr; }
         .bill-box { display: flex; gap: 26px; padding: 14px 18px; font-size: 13px; flex-wrap: wrap; align-items: center; }
-        .bill-total { font-size: 20px; font-weight: 900; color: #F86D1C; }
+        .bill-total { font-size: 20px; font-weight: 900; color: #FF921C; }
         .bill-note { padding: 0 18px 14px; font-size: 12px; color: #999; line-height: 1.6; }
         .di-cols { grid-template-columns: 1.8fr 1fr 0.7fr 0.9fr 1fr 0.8fr; }
         .c-cols { grid-template-columns: 1.4fr 1fr 0.8fr 1fr; }
@@ -199,7 +199,7 @@ export default async function AdminRestaurantDetail({ params }) {
             {branches.map((b) => (
               qrByBranch[b.id] ? (
                 <QrCard key={b.id} dataUrl={qrByBranch[b.id]} restaurant={r.name} branch={b.name}
-                  filename={('foodoo-' + (r.code_prefix || r.slug) + '-' + b.name).replace(/\s+/g, '-').toLowerCase() + '.png'} />
+                  filename={('foodish-' + (r.code_prefix || r.slug) + '-' + b.name).replace(/\s+/g, '-').toLowerCase() + '.png'} />
               ) : (
                 <div key={b.id} style={{ background: '#fff', border: '1px dashed #E0E0E0', borderRadius: 16, padding: 18, textAlign: 'center' }}>
                   <div style={{ fontSize: 14, fontWeight: 800, color: '#1A1A1A', marginBottom: 4 }}>{b.name}</div>
@@ -207,7 +207,7 @@ export default async function AdminRestaurantDetail({ params }) {
                   <form action={generateBranchQR}>
                     <input type="hidden" name="branch_id" value={b.id} />
                     <input type="hidden" name="restaurant_id" value={r.id} />
-                    <button type="submit" style={{ background: '#F86D1C', color: '#fff', border: 'none', borderRadius: 10, padding: '9px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>Generate QR</button>
+                    <button type="submit" style={{ background: '#FF921C', color: '#fff', border: 'none', borderRadius: 10, padding: '9px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>Generate QR</button>
                   </form>
                 </div>
               )

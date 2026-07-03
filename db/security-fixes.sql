@@ -1,4 +1,4 @@
--- Foodoo — comprehensive security hardening. Run once in the Supabase SQL Editor.
+-- Foodish — comprehensive security hardening. Run once in the Supabase SQL Editor.
 -- An authenticated-user attack sweep found permissive policies that allowed
 -- privilege escalation, cross-tenant writes, and review tampering. This resets
 -- every sensitive table to a correct minimal policy set + column-level locks.

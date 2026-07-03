@@ -24,7 +24,7 @@ function RankBadge({ rank, size }) {
     'Food Explorer': 'food-explorer',
     'Food Critic': 'food-critic',
     'Food Authority': 'food-authority',
-    'Foodoo Legend': 'foodoo-legend',
+    'Foodish Legend': 'foodish-legend',
   }
   return (
     <img
@@ -80,7 +80,7 @@ export default function ProfilePage() {
 
         const avatar = publicUrl || dataUrl
         const updated = { ...base, avatar_url: avatar, joined: profile?.joined || new Date().toISOString() }
-        localStorage.setItem('foodoo_profile', JSON.stringify(updated))
+        localStorage.setItem('foodish_profile', JSON.stringify(updated))
         setProfile(updated)
         setForm(f => ({ ...f, avatar_url: avatar }))
 
@@ -97,7 +97,7 @@ export default function ProfilePage() {
   }
 
   useEffect(() => {
-    const saved = localStorage.getItem('foodoo_profile')
+    const saved = localStorage.getItem('foodish_profile')
     if (saved) {
       const p = JSON.parse(saved)
       setProfile(p)
@@ -130,7 +130,7 @@ export default function ProfilePage() {
   const saveProfile = () => {
     if (!form.name.trim()) return
     const p = { ...form, joined: profile?.joined || new Date().toISOString() }
-    localStorage.setItem('foodoo_profile', JSON.stringify(p))
+    localStorage.setItem('foodish_profile', JSON.stringify(p))
     setProfile(p)
     setEditing(false)
     if (form.phone || form.email) fetchMyReviews(form.phone || form.email)
@@ -158,14 +158,14 @@ export default function ProfilePage() {
         .top-bar { background: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #F0F0F0; position: sticky; top: 0; z-index: 50; }
         .top-title { font-size: 17px; font-weight: 800; color: #1A1A1A; }
         .icon-btn { width: 36px; height: 36px; border-radius: 50%; background: #F5F5F5; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; }
-        .hero-section { background: #FFF3ED; padding: 28px 20px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .avatar { width: 80px; height: 80px; border-radius: 50%; background: #F86D1C; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 14px; position: relative; }
+        .hero-section { background: #FFF5E6; padding: 28px 20px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; background: #FF921C; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 14px; position: relative; }
         .avatar-edit { position: absolute; bottom: 0; right: 0; width: 26px; height: 26px; background: #fff; border-radius: 50%; border: 2px solid #F0F0F0; display: flex; align-items: center; justify-content: center; cursor: pointer; }
         .profile-name { font-size: 20px; font-weight: 800; color: #1A1A1A; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-        .edit-icon { cursor: pointer; color: #F86D1C; }
+        .edit-icon { cursor: pointer; color: #FF921C; }
         .profile-email { font-size: 13px; color: #666; margin-bottom: 4px; }
         .profile-phone { font-size: 13px; color: #666; display: flex; align-items: center; gap: 4px; justify-content: center; margin-bottom: 16px; }
-        .edit-btn { background: #F86D1C; color: #fff; border: none; border-radius: 20px; padding: 10px 24px; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: inherit; }
+        .edit-btn { background: #FF921C; color: #fff; border: none; border-radius: 20px; padding: 10px 24px; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: inherit; }
         .stats-card { background: #fff; margin: 16px; border-radius: 16px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; border: 1px solid #F0F0F0; }
         .stat-item { text-align: center; }
         .stat-icon { margin-bottom: 6px; display: flex; justify-content: center; }
@@ -174,13 +174,13 @@ export default function ProfilePage() {
         .section { margin: 0 16px 16px; background: #fff; border-radius: 16px; padding: 18px; border: 1px solid #F0F0F0; }
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
         .section-title { font-size: 16px; font-weight: 800; color: #1A1A1A; }
-        .how-ranks { font-size: 12px; color: #F86D1C; font-weight: 600; cursor: pointer; background: none; border: none; font-family: inherit; }
+        .how-ranks { font-size: 12px; color: #FF921C; font-weight: 600; cursor: pointer; background: none; border: none; font-family: inherit; }
         .rank-card { display: flex; gap: 14px; align-items: flex-start; }
         .rank-info { flex: 1; }
         .rank-name { font-size: 18px; font-weight: 800; margin-bottom: 2px; }
         .rank-range { font-size: 12px; color: #999; margin-bottom: 10px; }
         .next-rank-label { font-size: 12px; color: #555; margin-bottom: 4px; }
-        .next-rank-name { font-size: 14px; font-weight: 700; color: #F86D1C; margin-bottom: 8px; }
+        .next-rank-name { font-size: 14px; font-weight: 700; color: #FF921C; margin-bottom: 8px; }
         .progress-bar { height: 8px; background: #F0F0F0; border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
         .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
         .progress-text { font-size: 12px; color: #999; }
@@ -193,7 +193,7 @@ export default function ProfilePage() {
         .review-dish { font-size: 14px; font-weight: 700; color: #1A1A1A; }
         .review-rest { font-size: 12px; color: #888; margin-top: 1px; margin-bottom: 5px; }
         .review-stars { display: flex; gap: 2px; margin-bottom: 4px; }
-        .rstar { color: #F86D1C; font-size: 13px; }
+        .rstar { color: #FF921C; font-size: 13px; }
         .rstar.e { color: #DDD; }
         .review-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .vbadge { display: inline-flex; align-items: center; gap: 3px; background: #E8F5E9; color: #2E7D32; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px; }
@@ -212,15 +212,15 @@ export default function ProfilePage() {
         .form-field { margin-bottom: 14px; }
         .form-label { font-size: 13px; font-weight: 600; color: #1A1A1A; margin-bottom: 6px; display: block; }
         .form-input { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 12px; padding: 13px 16px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; background: #FAFAFA; }
-        .form-input:focus { border-color: #F86D1C; background: #fff; }
-        .save-btn { width: 100%; background: #F86D1C; color: #fff; border: none; border-radius: 14px; padding: 15px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; }
+        .form-input:focus { border-color: #FF921C; background: #fff; }
+        .save-btn { width: 100%; background: #FF921C; color: #fff; border: none; border-radius: 14px; padding: 15px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; }
         .skip-btn { background: none; border: none; color: #999; font-size: 13px; cursor: pointer; margin-top: 12px; font-family: inherit; }
         .no-reviews { text-align: center; padding: 32px 0; color: #BBB; font-size: 14px; }
         .bottom-nav { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); background: #fff; border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px; z-index: 100; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border: 1px solid #F0F0F0; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; padding: 6px 20px; border-radius: 14px; transition: background 0.15s; }
-        .nav-item.active { background: #FFF3ED; }
+        .nav-item.active { background: #FFF5E6; }
         .nav-label { font-size: 10px; color: #999; font-weight: 500; }
-        .nav-label.active { color: #F86D1C; font-weight: 700; }
+        .nav-label.active { color: #FF921C; font-weight: 700; }
         @media (min-width: 768px) {  }
         @media (min-width: 768px) {
           .hero-section { padding: 40px 40px 32px; }
@@ -253,11 +253,11 @@ export default function ProfilePage() {
             </div>
             <div className="form-field">
               <label className="form-label">Your Name *</label>
-              <input className="form-input" placeholder="e.g. Aqsa Malik" value={form.name} onChange={e => setForm({...form, name: e.target.value})} maxLength={40}/>
+              <input className="form-input" placeholder="e.g. Muhammad Ali" value={form.name} onChange={e => setForm({...form, name: e.target.value})} maxLength={40}/>
             </div>
             <div className="form-field">
               <label className="form-label">Email <span style={{color:'#999',fontWeight:400}}>(optional)</span></label>
-              <input className="form-input" placeholder="aqsa@gmail.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} type="email"/>
+              <input className="form-input" placeholder="ali@gmail.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} type="email"/>
             </div>
             <div className="form-field">
               <label className="form-label">Phone <span style={{color:'#999',fontWeight:400}}>(optional)</span></label>
@@ -307,8 +307,8 @@ export default function ProfilePage() {
             <div className="stats-card">
               <div className="stat-item">
                 <div className="stat-icon">
-                  <div style={{width:36,height:36,background:'#FFF3ED',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center'}}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#F86D1C" strokeWidth="1.5" strokeLinecap="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#F86D1C" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                  <div style={{width:36,height:36,background:'#FFF5E6',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#FF921C" strokeWidth="1.5" strokeLinecap="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#FF921C" strokeWidth="1.5" strokeLinecap="round"/></svg>
                   </div>
                 </div>
                 <div className="stat-num">{totalReviews}</div>
@@ -374,14 +374,14 @@ export default function ProfilePage() {
             <div className="section">
               <div className="section-header">
                 <div className="section-title">My Reviews</div>
-                {myReviews.length > 0 && <span style={{fontSize:13,color:'#F86D1C',fontWeight:600}}>View all</span>}
+                {myReviews.length > 0 && <span style={{fontSize:13,color:'#FF921C',fontWeight:600}}>View all</span>}
               </div>
               {myReviews.length === 0 ? (
                 <div className="no-reviews">
                   <div style={{fontSize:36,marginBottom:8}}>📝</div>
                   <div>No reviews yet</div>
                   <div style={{fontSize:12,marginTop:4}}>Start reviewing dishes to build your profile!</div>
-                  <a href="/" style={{display:'inline-block',marginTop:16,background:'#F86D1C',color:'#fff',textDecoration:'none',padding:'10px 24px',borderRadius:20,fontSize:13,fontWeight:700}}>Explore Dishes</a>
+                  <a href="/" style={{display:'inline-block',marginTop:16,background:'#FF921C',color:'#fff',textDecoration:'none',padding:'10px 24px',borderRadius:20,fontSize:13,fontWeight:700}}>Explore Dishes</a>
                 </div>
               ) : (
                 myReviews.slice(0, 5).map(r => (
@@ -423,9 +423,9 @@ export default function ProfilePage() {
             <a href="/partner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, margin: '0 16px 16px', background: '#1A1A1A', borderRadius: 16, padding: '16px 18px', textDecoration: 'none' }}>
               <div>
                 <div style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>🏪 Own a restaurant?</div>
-                <div style={{ fontSize: 12, color: '#AAA', marginTop: 2 }}>Partner with Foodoo — get your dishes discovered, ranked &amp; rated.</div>
+                <div style={{ fontSize: 12, color: '#AAA', marginTop: 2 }}>Partner with Foodish — get your dishes discovered, ranked &amp; rated.</div>
               </div>
-              <span style={{ background: '#F86D1C', color: '#fff', fontSize: 12, fontWeight: 800, padding: '9px 16px', borderRadius: 10, whiteSpace: 'nowrap' }}>Join us →</span>
+              <span style={{ background: '#FF921C', color: '#fff', fontSize: 12, fontWeight: 800, padding: '9px 16px', borderRadius: 10, whiteSpace: 'nowrap' }}>Join us →</span>
             </a>
           </>
         )}
@@ -464,7 +464,7 @@ export default function ProfilePage() {
           <span className="nav-label">Saved</span>
         </a>
         <a href="/profile" className="nav-item active">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#F86D1C" strokeWidth="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#F86D1C" strokeWidth="2" strokeLinecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#FF921C" strokeWidth="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/></svg>
           <span className="nav-label active">Profile</span>
         </a>
       </nav>

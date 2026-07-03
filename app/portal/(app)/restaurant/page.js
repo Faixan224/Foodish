@@ -25,7 +25,7 @@ export default async function RestaurantProfilePage() {
         .rp-sub { font-size: 14px; color: #999; margin-top: 4px; margin-bottom: 24px; }
       `}</style>
       <div className="rp-head">Restaurant profile</div>
-      <div className="rp-sub">This is how {restaurant.name} appears to customers on Foodoo.</div>
+      <div className="rp-sub">This is how {restaurant.name} appears to customers on Foodish.</div>
       <RestaurantProfileForm restaurant={restaurant} />
     </div>
   )

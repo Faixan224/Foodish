@@ -1,4 +1,4 @@
--- Foodoo — Restaurants Portal, Phase 1 migration
+-- Foodish — Restaurants Portal, Phase 1 migration
 -- Apply in the Supabase SQL Editor AFTER portal-migration.sql + fix-grants.sql.
 -- Adds: owner SKU, multi-photo, Chef's Special, and the dish<->branch mapping.
 

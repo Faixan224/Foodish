@@ -71,8 +71,8 @@ export default async function PortalBillingPage() {
         .strong { font-weight: 700; color: #1A1A1A; }
         .dim { color: #888; }
         .amount { font-weight: 800; color: #1A1A1A; }
-        .total-row { background: #FFF8F4; }
-        .total-row .amount { color: #F86D1C; font-size: 14px; }
+        .total-row { background: #FFFAF2; }
+        .total-row .amount { color: #FF921C; font-size: 14px; }
         .info { padding: 14px 18px; font-size: 12px; color: #999; line-height: 1.7; }
         .overdue-note { background: #FDECEA; color: #C0392B; border-radius: 12px; padding: 14px 16px; font-size: 13px; line-height: 1.6; margin-bottom: 18px; animation: fadeUp 0.3s ease both; }
       `}</style>
@@ -82,7 +82,7 @@ export default async function PortalBillingPage() {
 
       {(expired || suspended) && (
         <div className="overdue-note">
-          <b>{suspended ? 'Your dishes are currently hidden from Foodoo.' : 'Your payment is overdue.'}</b>{' '}
+          <b>{suspended ? 'Your dishes are currently hidden from Foodish.' : 'Your payment is overdue.'}</b>{' '}
           Please clear the pending amount to {suspended ? 'restore your listing' : 'avoid your dishes being hidden'} — WhatsApp +92 311 4424181.
         </div>
       )}

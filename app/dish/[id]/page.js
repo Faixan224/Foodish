@@ -75,7 +75,7 @@ export default async function DishPage({ params }) {
   if (!dish) return (
     <div style={{ textAlign: 'center', padding: 60, fontFamily: 'sans-serif' }}>
       <p style={{ fontSize: 18, color: '#888' }}>Dish not found</p>
-      <a href="/" style={{ color: '#F86D1C', textDecoration: 'none' }}>← Back to Home</a>
+      <a href="/" style={{ color: '#FF921C', textDecoration: 'none' }}>← Back to Home</a>
     </div>
   )
 

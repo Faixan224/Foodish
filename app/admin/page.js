@@ -48,13 +48,13 @@ export default async function AdminOverview() {
         .ov-sub { font-size: 14px; color: #999; margin-top: 4px; margin-bottom: 26px; }
         .ov-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 26px; }
         .ov-stat { background: #fff; border: 1px solid #EEE; border-radius: 14px; padding: 20px 22px; text-decoration: none; display: block; }
-        .ov-stat.link:hover { border-color: #F86D1C; }
+        .ov-stat.link:hover { border-color: #FF921C; }
         .ov-val { font-size: 30px; font-weight: 900; color: #1A1A1A; }
         .ov-lbl { font-size: 12px; color: #999; margin-top: 3px; }
         .ov-cta { background: #fff; border: 1px solid #EEE; border-radius: 14px; padding: 22px 24px; }
         .ov-cta-t { font-size: 15px; font-weight: 800; color: #1A1A1A; margin-bottom: 6px; }
         .ov-cta-x { font-size: 13px; color: #888; line-height: 1.6; }
-        .ov-btn { display: inline-block; margin-top: 14px; background: #F86D1C; color: #fff; text-decoration: none; border-radius: 10px; padding: 10px 18px; font-size: 14px; font-weight: 700; }
+        .ov-btn { display: inline-block; margin-top: 14px; background: #FF921C; color: #fff; text-decoration: none; border-radius: 10px; padding: 10px 18px; font-size: 14px; font-weight: 700; }
       `}</style>
 
       <div className="ov-head">Overview</div>

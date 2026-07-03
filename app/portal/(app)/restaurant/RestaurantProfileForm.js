@@ -80,26 +80,26 @@ export default function RestaurantProfileForm({ restaurant }) {
         .rf-card { background: #fff; border: 1px solid #EEE; border-radius: 16px; padding: 24px; margin-bottom: 18px; }
         .rf-title { font-size: 15px; font-weight: 800; color: #1A1A1A; margin-bottom: 4px; }
         .rf-note { font-size: 12px; color: #999; line-height: 1.6; margin-bottom: 16px; }
-        .guide { background: #FFF8F4; border: 1px solid #FBE3D4; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #9A5B31; line-height: 1.7; margin-bottom: 16px; }
+        .guide { background: #FFFAF2; border: 1px solid #FFE6BD; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #9A5B31; line-height: 1.7; margin-bottom: 16px; }
         .guide b { color: #7A3E12; }
         .cover-box { position: relative; width: 100%; aspect-ratio: 16/7; border-radius: 14px; overflow: hidden; background: #F5F5F5; border: 1.5px dashed #DDD; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.18s ease; }
-        .cover-box:hover { border-color: #F86D1C; }
+        .cover-box:hover { border-color: #FF921C; }
         .cover-box img { width: 100%; height: 100%; object-fit: cover; }
         .logo-row { display: flex; align-items: center; gap: 18px; }
         .logo-box { position: relative; width: 108px; height: 108px; border-radius: 20px; overflow: hidden; background: #F5F5F5; border: 1.5px dashed #DDD; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: border-color 0.18s ease; }
-        .logo-box:hover { border-color: #F86D1C; }
+        .logo-box:hover { border-color: #FF921C; }
         .logo-box img { width: 100%; height: 100%; object-fit: cover; }
         .up-hint { font-size: 12px; color: #999; font-weight: 600; text-align: center; padding: 0 8px; }
         .re-up { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.65); color: #fff; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
         .rf-label { display: block; font-size: 13px; font-weight: 700; color: #1A1A1A; margin: 16px 0 8px; }
         .rf-label .opt { font-size: 11px; color: #999; font-weight: 400; }
         .rf-input, .rf-textarea { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 12px; padding: 13px 14px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; background: #FAFAFA; transition: border-color 0.18s ease, background 0.18s ease; }
-        .rf-input:focus, .rf-textarea:focus { border-color: #F86D1C; background: #fff; }
+        .rf-input:focus, .rf-textarea:focus { border-color: #FF921C; background: #fff; }
         .rf-textarea { resize: none; }
         .name-row { display: flex; align-items: center; justify-content: space-between; background: #FAFAFA; border-radius: 12px; padding: 13px 14px; }
         .name-val { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .name-lock { font-size: 11px; color: #AAA; }
-        .rf-btn { width: 100%; background: #F86D1C; color: #fff; border: none; border-radius: 12px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; }
+        .rf-btn { width: 100%; background: #FF921C; color: #fff; border: none; border-radius: 12px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; }
         .rf-btn:disabled { opacity: 0.6; cursor: default; }
         .rf-err { background: #FDECEA; color: #C0392B; font-size: 13px; border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; animation: fadeUp 0.25s ease both; }
         .rf-ok { background: #E8F5E9; color: #2E7D32; font-size: 13px; border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; animation: fadeUp 0.25s ease both; }
@@ -138,7 +138,7 @@ export default function RestaurantProfileForm({ restaurant }) {
               : <span className="up-hint">{busy === 'logo' ? 'Uploading…' : '+ Logo'}</span>}
           </div>
           <div style={{ fontSize: 12, color: '#999', lineHeight: 1.6 }}>
-            Tip: a clean logo on a plain background looks best on the orange-and-white Foodoo cards.
+            Tip: a clean logo on a plain background looks best on the orange-and-white Foodish cards.
           </div>
         </div>
         <input ref={logoRef} type="file" accept="image/*" style={{ display: 'none' }}
@@ -151,7 +151,7 @@ export default function RestaurantProfileForm({ restaurant }) {
         <div className="rf-label">Restaurant name</div>
         <div className="name-row">
           <span className="name-val">{restaurant.name}</span>
-          <span className="name-lock">🔒 Contact the Foodoo team to change</span>
+          <span className="name-lock">🔒 Contact the Foodish team to change</span>
         </div>
 
         <div className="rf-label">Description <span className="opt">(shown on your page)</span></div>

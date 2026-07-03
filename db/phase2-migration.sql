@@ -1,4 +1,4 @@
--- Foodoo — Restaurants Portal, Phase 2 migration
+-- Foodish — Restaurants Portal, Phase 2 migration
 -- Apply in the Supabase SQL Editor AFTER phase1-migration.sql.
 -- Adds: subscription-expiry hide (DB-level) + tightened review-reply policy.
 

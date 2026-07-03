@@ -44,11 +44,11 @@ export default async function Home() {
         .header { padding: 20px 20px 0; background: #fff; }
         .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
         .logo { font-size: 28px; font-weight: 900; color: #1A1A1A; letter-spacing: -1px; line-height: 1; }
-        .logo span { color: #FF5B00; }
+        .logo span { color: #FF921C; }
         .logo-sub { font-size: 13px; color: #555; margin-top: 4px; font-weight: 400; line-height: 1.4; }
         .header-icons { display: flex; align-items: center; gap: 12px; }
         .bell-btn { width: 42px; height: 42px; border-radius: 50%; background: #F5F5F5; display: flex; align-items: center; justify-content: center; position: relative; text-decoration: none; }
-        .bell-dot { width: 9px; height: 9px; background: #FF5B00; border-radius: 50%; position: absolute; top: 9px; right: 10px; border: 1.5px solid #fff; }
+        .bell-dot { width: 9px; height: 9px; background: #FF921C; border-radius: 50%; position: absolute; top: 9px; right: 10px; border: 1.5px solid #fff; }
         .avatar { width: 42px; height: 42px; border-radius: 50%; background: #ddd; overflow: hidden; display: flex; align-items: center; justify-content: center; text-decoration: none; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -57,7 +57,7 @@ export default async function Home() {
         .search-bar { display: flex; align-items: center; background: #F7F7F7; border-radius: 50px; padding: 0 6px 0 18px; gap: 10px; height: 52px; }
         .search-input { flex: 1; background: none; border: none; outline: none; font-size: 15px; color: #1A1A1A; }
         .search-input::placeholder { color: #BBB; }
-        .search-btn { width: 40px; height: 40px; background: #FF5B00; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; }
+        .search-btn { width: 40px; height: 40px; background: #FF921C; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; }
 
         /* CATEGORIES */
         .cats-wrap { padding: 0 20px 16px; background: #fff; }
@@ -73,19 +73,19 @@ export default async function Home() {
 
         /* STATS BANNER */
         .stats-wrap { padding: 0 20px 20px; background: #fff; }
-        .stats-banner { background: #FFF3ED; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
+        .stats-banner { background: #FFF5E6; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
         .stats-avatars { display: flex; }
-        .stats-av { width: 30px; height: 30px; border-radius: 50%; background: #ddd; overflow: hidden; border: 2px solid #FFF3ED; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .stats-av { width: 30px; height: 30px; border-radius: 50%; background: #ddd; overflow: hidden; border: 2px solid #FFF5E6; display: flex; align-items: center; justify-content: center; font-size: 14px; }
         .stats-av + .stats-av { margin-left: -8px; }
         .stats-text { flex: 1; font-size: 13px; color: #1A1A1A; font-weight: 500; line-height: 1.4; }
-        .stats-badge { width: 36px; height: 36px; background: #FF5B00; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .stats-badge { width: 36px; height: 36px; background: #FF921C; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
         /* SECTION */
         .section { padding: 0 20px; margin-bottom: 28px; }
         .section-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
         .section-title { font-size: 18px; font-weight: 800; color: #1A1A1A; display: flex; align-items: center; gap: 6px; }
         .section-sub { font-size: 12px; color: #999; margin-top: 3px; font-weight: 400; }
-        .view-all { font-size: 13px; color: #FF5B00; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 2px; white-space: nowrap; margin-top: 2px; }
+        .view-all { font-size: 13px; color: #FF921C; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 2px; white-space: nowrap; margin-top: 2px; }
 
         /* DISH GRID */
         .dish-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -93,14 +93,14 @@ export default async function Home() {
         .dish-img-wrap { position: relative; height: 160px; background: #F5F5F5; overflow: hidden; }
         .dish-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .dish-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1A1A1A; }
-        .dish-rank-badge { position: absolute; top: 10px; left: 10px; background: #FF5B00; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 8px; }
+        .dish-rank-badge { position: absolute; top: 10px; left: 10px; background: #FF921C; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 8px; }
         .dish-save-btn { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .dish-info { padding: 10px 12px 12px; }
         .dish-name { font-size: 14px; font-weight: 700; color: #1A1A1A; line-height: 1.3; }
         .dish-rest-name { font-size: 12px; color: #888; margin-top: 3px; }
         .dish-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
         .dish-rating { display: flex; align-items: center; gap: 4px; }
-        .dish-stars { color: #FF5B00; font-size: 13px; }
+        .dish-stars { color: #FF921C; font-size: 13px; }
         .dish-rating-val { font-size: 13px; font-weight: 700; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-price { font-size: 12px; color: #555; font-weight: 500; }
@@ -121,7 +121,7 @@ export default async function Home() {
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #F0F0F0; display: flex; justify-content: space-around; padding: 10px 0 24px; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
         .nav-label { font-size: 10px; color: #999; }
-        .nav-label.active { color: #FF5B00; font-weight: 700; }
+        .nav-label.active { color: #FF921C; font-weight: 700; }
 
         /* EMPTY */
         .empty { text-align: center; padding: 48px 0; color: #CCC; }
@@ -156,7 +156,7 @@ export default async function Home() {
         <div className="header">
           <div className="header-top">
             <div>
-              <div className="logo">Food<span>oo</span></div>
+              <div className="logo">Food<span>ish</span></div>
               <div className="logo-sub">Find the best dish before<br/>you order</div>
             </div>
             <div className="header-icons">
@@ -335,8 +335,8 @@ export default async function Home() {
         {[
           { label: 'Home', href: '/', active: true, icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M3 12L12 3l9 9" stroke="#FF5B00" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9" stroke="#FF5B00" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M3 12L12 3l9 9" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           )},
           { label: 'Search', href: '/search', active: false, icon: (

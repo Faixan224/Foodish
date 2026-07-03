@@ -7,14 +7,14 @@ export default function SaveButton({ dishId }) {
   const [pop, setPop] = useState(false)
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('foodoo_saved') || '[]')
+    const saved = JSON.parse(localStorage.getItem('foodish_saved') || '[]')
     setIsSaved(saved.includes(dishId))
   }, [dishId])
 
   const toggle = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    const saved = JSON.parse(localStorage.getItem('foodoo_saved') || '[]')
+    const saved = JSON.parse(localStorage.getItem('foodish_saved') || '[]')
     let updated
     if (saved.includes(dishId)) {
       updated = saved.filter(id => id !== dishId)
@@ -25,7 +25,7 @@ export default function SaveButton({ dishId }) {
       setPop(true)
       setTimeout(() => setPop(false), 350)
     }
-    localStorage.setItem('foodoo_saved', JSON.stringify(updated))
+    localStorage.setItem('foodish_saved', JSON.stringify(updated))
   }
 
   return (

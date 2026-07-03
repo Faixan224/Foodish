@@ -12,7 +12,7 @@ export default function QrCard({ dataUrl, restaurant, branch, filename }) {
         .qrc-branch { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .qrc-rest { font-size: 12px; color: #999; }
         .qrc-cap { font-size: 11px; color: #BBB; }
-        .qrc-dl { display: inline-block; margin-top: 4px; background: #F86D1C; color: #fff; text-decoration: none; border-radius: 10px; padding: 9px 18px; font-size: 13px; font-weight: 700; }
+        .qrc-dl { display: inline-block; margin-top: 4px; background: #FF921C; color: #fff; text-decoration: none; border-radius: 10px; padding: 9px 18px; font-size: 13px; font-weight: 700; }
         .qrc-dl:hover { opacity: 0.92; }
       `}</style>
       {dataUrl
@@ -22,9 +22,9 @@ export default function QrCard({ dataUrl, restaurant, branch, filename }) {
         <div className="qrc-branch">{branch}</div>
         {restaurant && <div className="qrc-rest">{restaurant}</div>}
       </div>
-      <div className="qrc-cap">Scan to rate on Foodoo</div>
+      <div className="qrc-cap">Scan to rate on Foodish</div>
       {dataUrl && (
-        <a className="qrc-dl" href={dataUrl} download={filename || 'foodoo-qr.png'}>Download QR</a>
+        <a className="qrc-dl" href={dataUrl} download={filename || 'foodish-qr.png'}>Download QR</a>
       )}
     </div>
   )

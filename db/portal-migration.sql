@@ -1,4 +1,4 @@
--- Foodoo — Restaurants Portal, Phase 0 migration
+-- Foodish — Restaurants Portal, Phase 0 migration
 -- Apply in the Supabase SQL Editor AFTER db/schema.sql.
 -- Adds: restaurant code prefix + the onboarding_codes table (gated signup / per-branch unlock).
 

@@ -35,7 +35,7 @@ export default async function RestaurantsPage() {
         .rest-cuisine { font-size: 11px; color: #888; margin-top: 3px; line-height: 1.3; }
         .rest-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
         .rest-rating { display: flex; align-items: center; gap: 3px; }
-        .rest-stars { color: #F86D1C; font-size: 12px; }
+        .rest-stars { color: #FF921C; font-size: 12px; }
         .rest-rating-val { font-size: 12px; font-weight: 700; color: #1A1A1A; }
         .rest-rating-count { font-size: 11px; color: #999; }
         .rest-city { font-size: 10px; color: #888; display: flex; align-items: center; gap: 3px; }
@@ -60,7 +60,7 @@ export default async function RestaurantsPage() {
           </a>
           <div>
             <div className="top-title">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F86D1C"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF921C"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
               Top Restaurants
             </div>
             <div className="top-sub">Most loved restaurants by food lovers</div>

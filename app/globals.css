@@ -26,7 +26,7 @@ body {
 }
 
 /* =========================================================
-   Foodoo micro-interactions (shared across all pages)
+   Foodish micro-interactions (shared across all pages)
    Tasteful, modern motion — applied via the common class
    names so the whole app animates from one place.
    ========================================================= */
@@ -75,14 +75,14 @@ body {
   }
   .cat-pill:hover,
   .cat-btn:hover {
-    border-color: #f86d1c;
+    border-color: #FF921C;
     background: #fff7f2;
   }
   .view-all:hover {
     opacity: 0.7;
   }
   .nav-item:hover {
-    background: #fff3ed;
+    background: #FFF5E6;
   }
   .dish-save-btn:hover {
     transform: scale(1.12);

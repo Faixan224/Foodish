@@ -96,13 +96,13 @@ function SearchContent() {
         .search-form { display: flex; align-items: center; background: #F7F7F7; border-radius: 50px; padding: 0 6px 0 16px; gap: 8px; height: 46px; flex: 1; }
         .search-input { flex: 1; background: none; border: none; outline: none; font-size: 15px; color: #1A1A1A; font-family: inherit; }
         .search-input::placeholder { color: #BBB; }
-        .search-submit { width: 34px; height: 34px; background: #F86D1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; flex-shrink: 0; }
+        .search-submit { width: 34px; height: 34px; background: #FF921C; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; flex-shrink: 0; }
         .cats-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
         .cats-scroll::-webkit-scrollbar { display: none; }
         .cat-pill { display: flex; align-items: center; gap: 6px; background: #fff; border: 1.5px solid #E8E8E8; border-radius: 50px; padding: 6px 14px; white-space: nowrap; flex-shrink: 0; cursor: pointer; font-family: inherit; transition: all 0.15s; }
-        .cat-pill.active { background: #FFF3ED; border-color: #F86D1C; }
+        .cat-pill.active { background: #FFF5E6; border-color: #FF921C; }
         .cat-pill-name { font-size: 13px; color: #1A1A1A; font-weight: 500; }
-        .cat-pill.active .cat-pill-name { color: #F86D1C; font-weight: 600; }
+        .cat-pill.active .cat-pill-name { color: #FF921C; font-weight: 600; }
         .content { padding: 20px; }
         .results-count { font-size: 13px; color: #999; margin-bottom: 16px; }
         .dish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -115,7 +115,7 @@ function SearchContent() {
         .dish-rest { font-size: 12px; color: #888; margin-top: 3px; }
         .dish-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
         .dish-rating { display: flex; align-items: center; gap: 4px; }
-        .dish-stars { color: #F86D1C; font-size: 14px; }
+        .dish-stars { color: #FF921C; font-size: 14px; }
         .dish-rating-val { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-price { font-size: 14px; color: #1A1A1A; font-weight: 900; }
@@ -127,9 +127,9 @@ function SearchContent() {
 
         .bottom-nav { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); background: #fff; border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px; z-index: 100; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border: 1px solid #F0F0F0; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; padding: 6px 20px; border-radius: 14px; transition: background 0.15s; }
-        .nav-item.active { background: #FFF3ED; }
+        .nav-item.active { background: #FFF5E6; }
         .nav-label { font-size: 10px; color: #999; font-weight: 500; }
-        .nav-label.active { color: #F86D1C; font-weight: 700; }
+        .nav-label.active { color: #FF921C; font-weight: 700; }
 
         @media (min-width: 768px) {
           .top-bar { padding: 16px 40px; }
@@ -236,7 +236,7 @@ function SearchContent() {
                         <span className="dish-rating-count">({dish.total_reviews})</span>
                       </div>
                       <div className="dish-bottom">
-                        {dish.category && <span style={{background:'#FFF3ED',color:'#F86D1C',fontSize:11,fontWeight:700,padding:'4px 10px',borderRadius:20}}>{dish.category}</span>}
+                        {dish.category && <span style={{background:'#FFF5E6',color:'#FF921C',fontSize:11,fontWeight:700,padding:'4px 10px',borderRadius:20}}>{dish.category}</span>}
                         {dish.price && <span className="dish-price">Rs. {dish.price}</span>}
                       </div>
                     </div>
@@ -254,7 +254,7 @@ function SearchContent() {
           <span className="nav-label">Home</span>
         </a>
         <a href="/search" className="nav-item active">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#F86D1C" strokeWidth="2"/><path d="M16.5 16.5L21 21" stroke="#F86D1C" strokeWidth="2" strokeLinecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#FF921C" strokeWidth="2"/><path d="M16.5 16.5L21 21" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/></svg>
           <span className="nav-label active">Search</span>
         </a>
         <a href="/saved" className="nav-item">

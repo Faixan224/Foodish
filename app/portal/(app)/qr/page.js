@@ -49,7 +49,7 @@ export default async function PortalQrPage() {
         .q-head { font-size: 24px; font-weight: 800; color: #1A1A1A; }
         .q-sub { font-size: 14px; color: #999; margin-top: 4px; margin-bottom: 22px; }
         .q-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 22px; }
-        .q-info { background: #FFF8F4; border: 1px solid #FBE3D4; border-radius: 14px; padding: 14px 16px; font-size: 13px; color: #9A5B31; line-height: 1.7; }
+        .q-info { background: #FFFAF2; border: 1px solid #FFE6BD; border-radius: 14px; padding: 14px 16px; font-size: 13px; color: #9A5B31; line-height: 1.7; }
         .q-info b { color: #7A3E12; }
         .q-empty { background: #fff; border: 1px dashed #E0E0E0; border-radius: 16px; padding: 40px 24px; text-align: center; color: #999; font-size: 13px; animation: fadeUp 0.4s ease both; }
         .q-pending { font-size: 12px; color: #999; margin-top: 10px; }
@@ -59,14 +59,14 @@ export default async function PortalQrPage() {
       <div className="q-sub">Print these and place them on your tables. Scanning marks a diner's review as Verified.</div>
 
       {!restaurant || branches.length === 0 ? (
-        <div className="q-empty">Add a branch first — QR codes are generated per branch by the Foodoo team.</div>
+        <div className="q-empty">Add a branch first — QR codes are generated per branch by the Foodish team.</div>
       ) : (
         <>
           {withQr.length > 0 && (
             <div className="q-grid">
               {withQr.map((b) => (
                 <QrCard key={b.id} dataUrl={qrByBranch[b.id]} restaurant={restaurant.name} branch={b.name}
-                  filename={('foodoo-' + (restaurant.code_prefix || restaurant.slug) + '-' + b.name).replace(/\s+/g, '-').toLowerCase() + '.png'} />
+                  filename={('foodish-' + (restaurant.code_prefix || restaurant.slug) + '-' + b.name).replace(/\s+/g, '-').toLowerCase() + '.png'} />
               ))}
             </div>
           )}

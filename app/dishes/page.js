@@ -36,13 +36,13 @@ export default async function DishesPage() {
         .dish-info { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
         .dish-name { font-size: 15px; font-weight: 800; color: #1A1A1A; line-height: 1.3; }
         .dish-rating-row { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
-        .dish-stars { color: #F86D1C; font-size: 14px; }
+        .dish-stars { color: #FF921C; font-size: 14px; }
         .dish-rating-val { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-rest-dot { font-size: 12px; color: #CCC; margin: 0 2px; }
         .dish-rest-name { font-size: 12px; color: #999; }
         .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-        .dish-category-tag { background: #FFF3ED; color: #F86D1C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+        .dish-category-tag { background: #FFF5E6; color: #FF921C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
         .dish-price { font-size: 14px; color: #1A1A1A; font-weight: 900; }
         .dish-save-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
         .empty { text-align: center; padding: 48px 0; color: #BBB; font-size: 14px; }
@@ -65,7 +65,7 @@ export default async function DishesPage() {
           </a>
           <div>
             <div className="top-title">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F86D1C"><path d="M13.5 2.5c-.6 2.2-2 3.6-4.2 4.2 2.2.6 3.6 2 4.2 4.2.6-2.2 2-3.6 4.2-4.2-2.2-.6-3.6-2-4.2-4.2zM6 11c-.4 1.5-1.4 2.5-2.9 2.9C4.6 14.3 5.6 15.3 6 16.8c.4-1.5 1.4-2.5 2.9-2.9C7.4 13.5 6.4 12.5 6 11zm9.5 3c-.3 1.2-1.1 2-2.3 2.3 1.2.3 2 1.1 2.3 2.3.3-1.2 1.1-2 2.3-2.3-1.2-.3-2-1.1-2.3-2.3z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF921C"><path d="M13.5 2.5c-.6 2.2-2 3.6-4.2 4.2 2.2.6 3.6 2 4.2 4.2.6-2.2 2-3.6 4.2-4.2-2.2-.6-3.6-2-4.2-4.2zM6 11c-.4 1.5-1.4 2.5-2.9 2.9C4.6 14.3 5.6 15.3 6 16.8c.4-1.5 1.4-2.5 2.9-2.9C7.4 13.5 6.4 12.5 6 11zm9.5 3c-.3 1.2-1.1 2-2.3 2.3 1.2.3 2 1.1 2.3 2.3.3-1.2 1.1-2 2.3-2.3-1.2-.3-2-1.1-2.3-2.3z"/></svg>
               Popular Dishes
             </div>
             <div className="top-sub">{dishes.length} dishes across all restaurants</div>

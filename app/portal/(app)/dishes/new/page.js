@@ -27,13 +27,13 @@ export default async function NewDishPage() {
   return (
     <div>
       <style>{`
-        .n-back { font-size: 13px; color: #F86D1C; text-decoration: none; font-weight: 600; }
+        .n-back { font-size: 13px; color: #FF921C; text-decoration: none; font-weight: 600; }
         .n-head { font-size: 24px; font-weight: 800; color: #1A1A1A; margin: 14px 0 4px; }
         .n-sub { font-size: 14px; color: #999; margin-bottom: 24px; }
       `}</style>
       <a href="/portal/dishes" className="n-back">← Dishes</a>
       <div className="n-head">Add a dish</div>
-      <div className="n-sub">It appears on Foodoo as soon as you save.</div>
+      <div className="n-sub">It appears on Foodish as soon as you save.</div>
       <DishForm branches={branches} skuSuggestion={skuSuggestion} />
     </div>
   )

@@ -13,12 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Foodoo — Find the best dish before you order",
-  description: "Discover and rate the best dishes at your favourite restaurants.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://foodoo-mocha.vercel.app"),
+  title: "Foodish — Rate every Plate",
+  description: "Find the best dish before you order. Discover and rate dishes — not just restaurants — at your favourite spots.",
+  openGraph: {
+    title: "Foodish — Rate every Plate",
+    description: "Find the best dish before you order. Dish-level ratings from real food lovers.",
+    siteName: "Foodish",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Foodish — Rate every Plate" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Foodish — Rate every Plate",
+    description: "Find the best dish before you order. Dish-level ratings from real food lovers.",
+    images: ["/og.png"],
+  },
 };
 
 export const viewport = {
-  themeColor: "#F86D1C",
+  themeColor: "#FF921C",
   width: "device-width",
   initialScale: 1,
 };

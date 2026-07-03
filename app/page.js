@@ -58,19 +58,17 @@ export default async function Home() {
         body { background: #FDFDFD; font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; }
 
         .header { padding: 20px 20px 16px; background: #fff; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 26px; font-weight: 900; color: #1A1A1A; letter-spacing: -1px; line-height: 1; }
-        .logo span { color: #F86D1C; }
-        .logo-sub { font-size: 12px; color: #888; margin-top: 3px; font-weight: 400; }
+        .logo-img { width: 150px; height: auto; display: block; }
         .header-icons { display: flex; align-items: center; gap: 10px; }
-        .join-btn { display: inline-flex; align-items: center; border: 1.5px solid #F86D1C; color: #F86D1C; background: #fff; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: background 0.15s ease, color 0.15s ease; }
-        .join-btn:hover { background: #F86D1C; color: #fff; }
+        .join-btn { display: inline-flex; align-items: center; border: 1.5px solid #FF921C; color: #FF921C; background: #fff; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: background 0.15s ease, color 0.15s ease; }
+        .join-btn:hover { background: #FF921C; color: #fff; }
         .icon-circle { width: 40px; height: 40px; border-radius: 50%; background: #F5F5F5; display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; }
-        .bell-dot { width: 8px; height: 8px; background: #F86D1C; border-radius: 50%; position: absolute; top: 8px; right: 9px; border: 1.5px solid #fff; }
+        .bell-dot { width: 8px; height: 8px; background: #FF921C; border-radius: 50%; position: absolute; top: 8px; right: 9px; border: 1.5px solid #fff; }
 
         .search-wrap { padding: 12px 20px 0; background: #fff; }
         .search-bar { display: flex; align-items: center; background: #F5F5F5; border-radius: 14px; padding: 0 8px 0 16px; gap: 10px; height: 50px; border: 1.5px solid #EBEBEB; }
         .search-text { flex: 1; font-size: 14px; color: #BBB; text-decoration: none; }
-        .search-btn { width: 36px; height: 36px; background: #F86D1C; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; }
+        .search-btn { width: 36px; height: 36px; background: #FF921C; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; }
 
         .cats-wrap { padding: 14px 20px; background: #fff; }
         .cats-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
@@ -79,14 +77,14 @@ export default async function Home() {
         .cat-name { font-size: 13px; color: #1A1A1A; font-weight: 500; }
 
         .stats-wrap { padding: 0 20px 16px; background: #fff; }
-        .stats-banner { background: #FFF3ED; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+        .stats-banner { background: #FFF5E6; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
         .stats-avatars { display: flex; }
-        .stats-av { width: 32px; height: 32px; border-radius: 50%; background: #ddd; border: 2px solid #FFF3ED; display: flex; align-items: center; justify-content: center; font-size: 15px; overflow: hidden; }
+        .stats-av { width: 32px; height: 32px; border-radius: 50%; background: #ddd; border: 2px solid #FFF5E6; display: flex; align-items: center; justify-content: center; font-size: 15px; overflow: hidden; }
         .stats-av + .stats-av { margin-left: -10px; }
         .stats-text-wrap { flex: 1; }
         .stats-text-bold { font-size: 14px; font-weight: 700; color: #1A1A1A; }
         .stats-text-sub { font-size: 12px; color: #888; margin-top: 1px; }
-        .stats-badge { width: 38px; height: 38px; background: #F86D1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .stats-badge { width: 38px; height: 38px; background: #FF921C; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
         .divider { height: 8px; background: #FDFDFD; }
 
@@ -94,7 +92,7 @@ export default async function Home() {
         .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 14px; }
         .section-title { font-size: 20px; font-weight: 800; color: #1A1A1A; display: flex; align-items: center; gap: 6px; }
         .section-sub { font-size: 12px; color: #999; margin-top: 2px; font-weight: 400; }
-        .view-all { font-size: 13px; color: #F86D1C; font-weight: 600; text-decoration: none; }
+        .view-all { font-size: 13px; color: #FF921C; font-weight: 600; text-decoration: none; }
 
         .dish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding-bottom: 20px; }
         /* Mobile: show only first 2 rows (4 dishes); rest via "View all" */
@@ -103,18 +101,18 @@ export default async function Home() {
         .dish-img-wrap { position: relative; width: 100%; aspect-ratio: 1/1; background: #fff; overflow: hidden; }
         .dish-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .dish-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #F5F5F5; }
-        .dish-rank-badge { position: absolute; top: 8px; left: 8px; background: #F86D1C; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 7px; }
+        .dish-rank-badge { position: absolute; top: 8px; left: 8px; background: #FF921C; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 7px; }
         .dish-save-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
         .dish-info { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
         .dish-name { font-size: 15px; font-weight: 800; color: #1A1A1A; line-height: 1.3; }
         .dish-rating-row { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
-        .dish-stars { color: #F86D1C; font-size: 14px; }
+        .dish-stars { color: #FF921C; font-size: 14px; }
         .dish-rating-val { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-rest-dot { font-size: 12px; color: #CCC; margin: 0 2px; }
         .dish-rest-name { font-size: 12px; color: #999; }
         .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-        .dish-category-tag { background: #FFF3ED; color: #F86D1C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+        .dish-category-tag { background: #FFF5E6; color: #FF921C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
         .dish-price { font-size: 14px; color: #1A1A1A; font-weight: 900; }
 
         .rest-scroll { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; padding-bottom: 20px; }
@@ -125,9 +123,9 @@ export default async function Home() {
 
         .bottom-nav { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); background: #fff; border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px; z-index: 100; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border: 1px solid #F0F0F0; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; padding: 6px 20px; border-radius: 14px; transition: background 0.15s; }
-        .nav-item.active { background: #FFF3ED; }
+        .nav-item.active { background: #FFF5E6; }
         .nav-label { font-size: 10px; color: #999; font-weight: 500; }
-        .nav-label.active { color: #F86D1C; font-weight: 700; }
+        .nav-label.active { color: #FF921C; font-weight: 700; }
 
         .empty { text-align: center; padding: 48px 0; color: #CCC; }
         .empty p { font-size: 13px; margin-top: 12px; color: #BBB; }
@@ -140,7 +138,7 @@ export default async function Home() {
           .section { padding: 20px 40px 0; }
           .dish-grid { grid-template-columns: repeat(5, 1fr); }
           .dish-grid .dish-card:nth-child(n+5) { display: flex; }
-          .logo { font-size: 32px; }
+          .logo-img { width: 185px; }
         }
         @media (min-width: 1200px) {
           .header { padding: 28px 80px 16px; }
@@ -156,8 +154,7 @@ export default async function Home() {
         {/* HEADER */}
         <div className="header">
           <div>
-            <div className="logo">Food<span>oo</span></div>
-            <div className="logo-sub">Find the best dish before you order</div>
+            <img className="logo-img" src="/foodish-logo-dark.png" alt="Foodish — Rate every Plate" />
           </div>
           <div className="header-icons">
             <a href="/partner" className="join-btn">Join us</a>
@@ -263,7 +260,7 @@ export default async function Home() {
           <div className="section-header">
             <div>
               <div className="section-title">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#F86D1C"><path d="M12 2a1 1 0 01.9.56l2.6 5.27 5.82.85a1 1 0 01.55 1.7l-4.2 4.1 1 5.8a1 1 0 01-1.45 1.05L12 18.6l-5.2 2.73a1 1 0 01-1.45-1.05l1-5.8-4.2-4.1a1 1 0 01.55-1.7l5.82-.85L11.1 2.56A1 1 0 0112 2z" opacity="0"/><path d="M13.5 2.5c-.6 2.2-2 3.6-4.2 4.2 2.2.6 3.6 2 4.2 4.2.6-2.2 2-3.6 4.2-4.2-2.2-.6-3.6-2-4.2-4.2zM6 11c-.4 1.5-1.4 2.5-2.9 2.9C4.6 14.3 5.6 15.3 6 16.8c.4-1.5 1.4-2.5 2.9-2.9C7.4 13.5 6.4 12.5 6 11zm9.5 3c-.3 1.2-1.1 2-2.3 2.3 1.2.3 2 1.1 2.3 2.3.3-1.2 1.1-2 2.3-2.3-1.2-.3-2-1.1-2.3-2.3z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF921C"><path d="M12 2a1 1 0 01.9.56l2.6 5.27 5.82.85a1 1 0 01.55 1.7l-4.2 4.1 1 5.8a1 1 0 01-1.45 1.05L12 18.6l-5.2 2.73a1 1 0 01-1.45-1.05l1-5.8-4.2-4.1a1 1 0 01.55-1.7l5.82-.85L11.1 2.56A1 1 0 0112 2z" opacity="0"/><path d="M13.5 2.5c-.6 2.2-2 3.6-4.2 4.2 2.2.6 3.6 2 4.2 4.2.6-2.2 2-3.6 4.2-4.2-2.2-.6-3.6-2-4.2-4.2zM6 11c-.4 1.5-1.4 2.5-2.9 2.9C4.6 14.3 5.6 15.3 6 16.8c.4-1.5 1.4-2.5 2.9-2.9C7.4 13.5 6.4 12.5 6 11zm9.5 3c-.3 1.2-1.1 2-2.3 2.3 1.2.3 2 1.1 2.3 2.3.3-1.2 1.1-2 2.3-2.3-1.2-.3-2-1.1-2.3-2.3z"/></svg>
                 Popular Dishes
               </div>
               <div className="section-sub">Most-loved dishes across all restaurants</div>
@@ -309,7 +306,7 @@ export default async function Home() {
           <div className="section-header">
             <div>
               <div className="section-title">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#F86D1C"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF921C"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
                 Top Restaurants
               </div>
               <div className="section-sub">Most loved restaurants by food lovers</div>
@@ -334,7 +331,7 @@ export default async function Home() {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                        <span style={{ color: '#F86D1C', fontSize: 12 }}>★</span>
+                        <span style={{ color: '#FF921C', fontSize: 12 }}>★</span>
                         <span style={{ fontSize: 12, fontWeight: 700, color: '#1A1A1A' }}>{r.avg_rating ? r.avg_rating.toFixed(1) : 'New'}</span>
                       </div>
                       <div style={{ fontSize: 10, color: '#888', display: 'flex', alignItems: 'center', gap: 3 }}>
@@ -349,14 +346,14 @@ export default async function Home() {
           )}
         </div>
 
-        {/* PARTNER WITH FOODOO */}
+        {/* PARTNER WITH FOODISH */}
         <div className="section">
           <a href="/partner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, background: '#1A1A1A', borderRadius: 18, padding: '18px 20px', textDecoration: 'none' }}>
             <div>
               <div style={{ fontSize: 15, fontWeight: 800, color: '#fff' }}>🏪 Own a restaurant?</div>
-              <div style={{ fontSize: 12, color: '#AAA', marginTop: 3, lineHeight: 1.5 }}>Partner with Foodoo — get your dishes discovered, ranked &amp; rated.</div>
+              <div style={{ fontSize: 12, color: '#AAA', marginTop: 3, lineHeight: 1.5 }}>Partner with Foodish — get your dishes discovered, ranked &amp; rated.</div>
             </div>
-            <span style={{ background: '#F86D1C', color: '#fff', fontSize: 12, fontWeight: 800, padding: '9px 16px', borderRadius: 10, whiteSpace: 'nowrap' }}>Join us →</span>
+            <span style={{ background: '#FF921C', color: '#fff', fontSize: 12, fontWeight: 800, padding: '9px 16px', borderRadius: 10, whiteSpace: 'nowrap' }}>Join us →</span>
           </a>
         </div>
 
@@ -365,7 +362,7 @@ export default async function Home() {
       {/* BOTTOM NAV */}
       <nav className="bottom-nav">
         <a href="/" className="nav-item active">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12L12 3l9 9" stroke="#F86D1C" strokeWidth="2" strokeLinecap="round"/><path d="M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9" stroke="#F86D1C" strokeWidth="2" strokeLinecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12L12 3l9 9" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/><path d="M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9" stroke="#FF921C" strokeWidth="2" strokeLinecap="round"/></svg>
           <span className="nav-label active">Home</span>
         </a>
         <a href="/search" className="nav-item">

@@ -12,7 +12,7 @@ export default function SavedPage() {
   }, [])
 
   const loadSaved = async () => {
-    const saved = JSON.parse(localStorage.getItem('foodoo_saved') || '[]')
+    const saved = JSON.parse(localStorage.getItem('foodish_saved') || '[]')
     if (saved.length === 0) { setLoading(false); return }
 
     const { data } = await supabase
@@ -26,9 +26,9 @@ export default function SavedPage() {
   }
 
   const removeSaved = (dishId) => {
-    const saved = JSON.parse(localStorage.getItem('foodoo_saved') || '[]')
+    const saved = JSON.parse(localStorage.getItem('foodish_saved') || '[]')
     const updated = saved.filter(id => id !== dishId)
-    localStorage.setItem('foodoo_saved', JSON.stringify(updated))
+    localStorage.setItem('foodish_saved', JSON.stringify(updated))
     setSavedDishes(prev => prev.filter(d => d.id !== dishId))
   }
 
@@ -52,21 +52,21 @@ export default function SavedPage() {
         .dish-rest { font-size: 11px; color: #888; margin-top: 2px; }
         .dish-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
         .dish-rating { display: flex; align-items: center; gap: 3px; }
-        .dish-stars { color: #F86D1C; font-size: 12px; }
+        .dish-stars { color: #FF921C; font-size: 12px; }
         .dish-rating-val { font-size: 12px; font-weight: 700; color: #1A1A1A; }
         .dish-rating-count { font-size: 11px; color: #999; }
         .dish-price { font-size: 11px; color: #555; font-weight: 500; }
         .empty-state { text-align: center; padding: 80px 20px; }
         .empty-title { font-size: 18px; font-weight: 800; color: #1A1A1A; margin-bottom: 8px; margin-top: 16px; }
         .empty-sub { font-size: 14px; color: #888; margin-bottom: 24px; }
-        .explore-btn { background: #F86D1C; color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 20px; font-size: 14px; font-weight: 700; display: inline-block; }
+        .explore-btn { background: #FF921C; color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 20px; font-size: 14px; font-weight: 700; display: inline-block; }
         .count-text { font-size: 13px; color: #999; margin-bottom: 16px; }
 
         .bottom-nav { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); background: #fff; border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px; z-index: 100; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border: 1px solid #F0F0F0; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; padding: 6px 20px; border-radius: 14px; transition: background 0.15s; }
-        .nav-item.active { background: #FFF3ED; }
+        .nav-item.active { background: #FFF5E6; }
         .nav-label { font-size: 10px; color: #999; font-weight: 500; }
-        .nav-label.active { color: #F86D1C; font-weight: 700; }
+        .nav-label.active { color: #FF921C; font-weight: 700; }
 
         @media (min-width: 768px) {
           .content { padding: 24px 40px; }
@@ -155,7 +155,7 @@ export default function SavedPage() {
           <span className="nav-label">Search</span>
         </a>
         <a href="/saved" className="nav-item active">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F86D1C"><path d="M12 21C12 21 3 14 3 8a5 5 0 019-3 5 5 0 019 3c0 6-9 13-9 13z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF921C"><path d="M12 21C12 21 3 14 3 8a5 5 0 019-3 5 5 0 019 3c0 6-9 13-9 13z"/></svg>
           <span className="nav-label active">Saved</span>
         </a>
         <a href="/profile" className="nav-item">

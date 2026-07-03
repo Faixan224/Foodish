@@ -46,7 +46,7 @@ export default async function RestaurantPage({ params, searchParams }) {
   if (!restaurant) return (
     <div style={{ textAlign: 'center', padding: 60, fontFamily: 'sans-serif' }}>
       <p style={{ fontSize: 18, color: '#888' }}>Restaurant not found</p>
-      <a href="/" style={{ color: '#F86D1C', textDecoration: 'none' }}>← Back to Home</a>
+      <a href="/" style={{ color: '#FF921C', textDecoration: 'none' }}>← Back to Home</a>
     </div>
   )
 
@@ -88,7 +88,7 @@ export default async function RestaurantPage({ params, searchParams }) {
         .rest-name { font-size: 22px; font-weight: 800; color: #1A1A1A; line-height: 1.2; margin-bottom: 4px; }
         .rest-cuisine { font-size: 13px; color: #888; margin-bottom: 8px; }
         .rest-rating-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        .rating-chip { display: flex; align-items: center; gap: 5px; background: #FFF3ED; padding: 5px 10px; border-radius: 20px; }
+        .rating-chip { display: flex; align-items: center; gap: 5px; background: #FFF5E6; padding: 5px 10px; border-radius: 20px; }
         .rating-chip-val { font-size: 14px; font-weight: 700; color: #1A1A1A; }
         .rating-chip-count { font-size: 12px; color: #999; }
         .city-chip { display: flex; align-items: center; gap: 4px; font-size: 12px; color: #888; }
@@ -99,24 +99,24 @@ export default async function RestaurantPage({ params, searchParams }) {
         .cat-filter { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 16px; }
         .cat-filter::-webkit-scrollbar { display: none; }
         .cat-btn { padding: 6px 14px; border-radius: 50px; border: 1.5px solid #E8E8E8; background: #fff; font-size: 13px; font-weight: 500; color: #555; cursor: pointer; white-space: nowrap; flex-shrink: 0; font-family: inherit; text-decoration: none; display: inline-block; }
-        .cat-btn.active { background: #FFF3ED; border-color: #F86D1C; color: #F86D1C; font-weight: 600; }
+        .cat-btn.active { background: #FFF5E6; border-color: #FF921C; color: #FF921C; font-weight: 600; }
         .dish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
         .dish-card { background: #fff; border-radius: 18px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
         .dish-img-wrap { position: relative; width: 100%; aspect-ratio: 1/1; background: #fff; overflow: hidden; }
         .dish-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .dish-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #F5F5F5; }
         .badge-col { position: absolute; top: 8px; left: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
-        .rank-badge { background: #F86D1C; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 7px; }
+        .rank-badge { background: #FF921C; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 7px; }
         .chef-badge { background: #1A1A1A; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 7px; }
-        .chef-badge .sp { color: #F86D1C; }
+        .chef-badge .sp { color: #FF921C; }
         .dish-info { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
         .dish-name { font-size: 15px; font-weight: 800; color: #1A1A1A; line-height: 1.3; }
         .dish-rating-row { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
-        .dish-stars { color: #F86D1C; font-size: 14px; }
+        .dish-stars { color: #FF921C; font-size: 14px; }
         .dish-rating-val { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-        .dish-category-tag { background: #FFF3ED; color: #F86D1C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+        .dish-category-tag { background: #FFF5E6; color: #FF921C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
         .dish-price { font-size: 14px; color: #1A1A1A; font-weight: 900; }
         .empty { text-align: center; padding: 40px; color: #BBB; font-size: 14px; }
         .bottom-nav { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); background: #fff; border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px; z-index: 100; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border: 1px solid #F0F0F0; }
@@ -169,7 +169,7 @@ export default async function RestaurantPage({ params, searchParams }) {
               <div className="rest-rating-row">
                 {restaurant.avg_rating > 0 && (
                   <div className="rating-chip">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#F86D1C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#FF921C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <span className="rating-chip-val">{restaurant.avg_rating.toFixed(1)}</span>
                     <span className="rating-chip-count">({restaurant.total_reviews} reviews)</span>
                   </div>

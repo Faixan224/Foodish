@@ -37,7 +37,7 @@ export default async function BranchesPage() {
         .b-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
         .b-card:nth-child(2) { animation-delay: 0.05s; } .b-card:nth-child(3) { animation-delay: 0.1s; }
         .b-card:nth-child(4) { animation-delay: 0.15s; } .b-card:nth-child(5) { animation-delay: 0.2s; }
-        .b-icon { width: 40px; height: 40px; border-radius: 12px; background: #FFF3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .b-icon { width: 40px; height: 40px; border-radius: 12px; background: #FFF5E6; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
         .b-name { font-size: 15px; font-weight: 800; color: #1A1A1A; }
         .b-meta { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.6; }
         .b-row { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
@@ -54,7 +54,7 @@ export default async function BranchesPage() {
       <div className="b-sub">
         {list.length === 0
           ? 'Your onboarding includes your first branch — add it below.'
-          : `${list.length} branch${list.length > 1 ? 'es' : ''} · additional branches need a branch code from the Foodoo team.`}
+          : `${list.length} branch${list.length > 1 ? 'es' : ''} · additional branches need a branch code from the Foodish team.`}
       </div>
 
       <div className="b-grid">
@@ -73,7 +73,7 @@ export default async function BranchesPage() {
               {list.map((b) => (
                 <div className="b-card" key={b.id}>
                   <div className="b-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z" fill="#F86D1C"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z" fill="#FF921C"/></svg>
                   </div>
                   <div className="b-name">{b.name}</div>
                   <div className="b-meta">

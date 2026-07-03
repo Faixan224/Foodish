@@ -46,7 +46,7 @@ export default async function AdminRestaurantsPage() {
         a.r-tr:hover { background: #FFFBF8; }
         .r-th { background: #FAFAFA; font-weight: 700; color: #888; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; }
         .r-name { font-weight: 800; color: #1A1A1A; display: flex; align-items: center; gap: 8px; }
-        .r-prefix { font-size: 10px; font-weight: 800; background: #FFF3ED; color: #F86D1C; padding: 2px 7px; border-radius: 6px; letter-spacing: 0.5px; }
+        .r-prefix { font-size: 10px; font-weight: 800; background: #FFF5E6; color: #FF921C; padding: 2px 7px; border-radius: 6px; letter-spacing: 0.5px; }
         .r-dim { color: #888; }
         .r-owner { color: #555; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .r-owner.none { color: #C4A15A; }

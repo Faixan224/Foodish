@@ -1,4 +1,4 @@
--- Foodoo — Phase 3: QR verification. Run in the Supabase SQL Editor.
+-- Foodish — Phase 3: QR verification. Run in the Supabase SQL Editor.
 -- One permanent QR per branch. Scanning it (server-validated) makes reviews
 -- for that branch's dishes count as "verified" (3x) for a short window.
 

@@ -102,7 +102,7 @@ export default async function PortalDashboard() {
         .dash-head { font-size: 24px; font-weight: 800; color: #1A1A1A; }
         .dash-sub { font-size: 14px; color: #999; margin-top: 4px; margin-bottom: 26px; }
         .rest-card { background: #fff; border: 1px solid #EEE; border-radius: 16px; padding: 22px 24px; display: flex; align-items: center; gap: 18px; margin-bottom: 22px; animation: fadeUp 0.4s ease both; }
-        .rest-badge { width: 54px; height: 54px; border-radius: 14px; background: #FFF3ED; color: #F86D1C; font-weight: 900; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .rest-badge { width: 54px; height: 54px; border-radius: 14px; background: #FFF5E6; color: #FF921C; font-weight: 900; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .rest-name { font-size: 18px; font-weight: 800; color: #1A1A1A; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .rest-meta { font-size: 13px; color: #999; margin-top: 3px; }
         .vchip { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
@@ -112,7 +112,7 @@ export default async function PortalDashboard() {
         @media (max-width: 900px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
         .stat { background: #fff; border: 1px solid #EEE; border-radius: 14px; padding: 18px 20px; text-decoration: none; display: block; animation: fadeUp 0.4s ease both; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
         .stat:nth-child(2) { animation-delay: 0.05s; } .stat:nth-child(3) { animation-delay: 0.1s; } .stat:nth-child(4) { animation-delay: 0.15s; }
-        a.stat:hover { transform: translateY(-2px); border-color: #F86D1C; box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
+        a.stat:hover { transform: translateY(-2px); border-color: #FF921C; box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
         .stat-val { font-size: 26px; font-weight: 900; color: #1A1A1A; }
         .stat-lbl { font-size: 12px; color: #999; margin-top: 3px; }
         .an-title { font-size: 16px; font-weight: 800; color: #1A1A1A; margin: 4px 0 12px; animation: fadeUp 0.4s ease 0.08s both; }
@@ -120,7 +120,7 @@ export default async function PortalDashboard() {
         @media (max-width: 900px) { .an-windows { grid-template-columns: 1fr; } }
         .an-card { background: #fff; border: 1px solid #EEE; border-radius: 14px; padding: 16px 18px; animation: fadeUp 0.4s ease 0.1s both; transition: transform 0.18s ease, box-shadow 0.18s ease; }
         .an-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
-        .an-days { font-size: 10px; font-weight: 800; color: #F86D1C; letter-spacing: 0.8px; margin-bottom: 10px; }
+        .an-days { font-size: 10px; font-weight: 800; color: #FF921C; letter-spacing: 0.8px; margin-bottom: 10px; }
         .an-nums { display: flex; gap: 26px; }
         .an-val { font-size: 22px; font-weight: 900; color: #1A1A1A; }
         .an-lbl { font-size: 11px; color: #999; margin-top: 1px; }
@@ -141,10 +141,10 @@ export default async function PortalDashboard() {
         .qa-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; animation: fadeUp 0.4s ease 0.1s both; }
         @media (max-width: 700px) { .qa-row { grid-template-columns: 1fr; } }
         .qa { background: #fff; border: 1px solid #EEE; border-radius: 16px; padding: 20px 22px; text-decoration: none; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; display: block; }
-        .qa:hover { transform: translateY(-2px); border-color: #F86D1C; box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
+        .qa:hover { transform: translateY(-2px); border-color: #FF921C; box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
         .qa-t { font-size: 15px; font-weight: 800; color: #1A1A1A; margin-bottom: 4px; }
         .qa-s { font-size: 12px; color: #888; line-height: 1.5; }
-        .qa-go { font-size: 13px; color: #F86D1C; font-weight: 700; margin-top: 10px; display: inline-block; }
+        .qa-go { font-size: 13px; color: #FF921C; font-weight: 700; margin-top: 10px; display: inline-block; }
       `}</style>
 
       <div className="dash-head">Dashboard</div>
@@ -266,13 +266,13 @@ export default async function PortalDashboard() {
             ) : (
               <a className="qa" href="/portal/dishes/new">
                 <div className="qa-t">🍽️ Add a dish</div>
-                <div className="qa-s">Photos, price, branches, Chef's Special — live on Foodoo instantly.</div>
+                <div className="qa-s">Photos, price, branches, Chef's Special — live on Foodish instantly.</div>
                 <span className="qa-go">Add dish →</span>
               </a>
             )}
             <a className="qa" href="/portal/reviews">
               <div className="qa-t">💬 Reply to reviews</div>
-              <div className="qa-s">See what diners are saying about your dishes and respond — replies show publicly on Foodoo.</div>
+              <div className="qa-s">See what diners are saying about your dishes and respond — replies show publicly on Foodish.</div>
               <span className="qa-go">Open reviews →</span>
             </a>
           </div>

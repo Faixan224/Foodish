@@ -1,4 +1,4 @@
--- Foodoo — fix missing table-level GRANTs (run once in the Supabase SQL Editor).
+-- Foodish — fix missing table-level GRANTs (run once in the Supabase SQL Editor).
 --
 -- Symptom: "permission denied for table users" (42501) even with the service_role
 -- key, causing the portal login redirect loop. This project's tables were created

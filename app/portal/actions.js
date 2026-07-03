@@ -182,7 +182,7 @@ export async function addBranch(prevState, formData) {
   let codeRow = null
   if ((count ?? 0) > 0) {
     // Additional branch — must present a valid add_branch code for this restaurant.
-    if (!code) return { error: 'A branch code is required to add another branch. Contact the Foodoo team.' }
+    if (!code) return { error: 'A branch code is required to add another branch. Contact the Foodish team.' }
     const { data } = await admin
       .from('onboarding_codes')
       .select('*')

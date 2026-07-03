@@ -39,7 +39,7 @@ export default async function EditDishPage({ params }) {
   return (
     <div>
       <style>{`
-        .n-back { font-size: 13px; color: #F86D1C; text-decoration: none; font-weight: 600; }
+        .n-back { font-size: 13px; color: #FF921C; text-decoration: none; font-weight: 600; }
         .n-head { font-size: 24px; font-weight: 800; color: #1A1A1A; margin: 14px 0 4px; }
         .n-sub { font-size: 14px; color: #999; margin-bottom: 24px; letter-spacing: 0.3px; }
       `}</style>

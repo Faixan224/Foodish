@@ -18,7 +18,7 @@ export default function BillingControls({ restaurantId, isActive }) {
         .bc-field { display: flex; flex-direction: column; gap: 5px; }
         .bc-l { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.4px; }
         .bc-date { border: 1.5px solid #EBEBEB; border-radius: 10px; padding: 9px 12px; font-size: 13px; font-family: inherit; color: #1A1A1A; outline: none; background: #FAFAFA; }
-        .bc-date:focus { border-color: #F86D1C; }
+        .bc-date:focus { border-color: #FF921C; }
         .bc-btn { background: #2E7D32; color: #fff; border: none; border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; }
         .bc-btn:disabled { opacity: 0.6; }
         .bc-sus { background: #fff; border: 1.5px solid #FDD; color: #C0392B; border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; }

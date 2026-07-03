@@ -45,7 +45,7 @@ export default async function DishesPage() {
         .d-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
         .d-head { font-size: 24px; font-weight: 800; color: #1A1A1A; }
         .d-sub { font-size: 14px; color: #999; margin-top: 4px; }
-        .add-btn { background: #F86D1C; color: #fff; text-decoration: none; border-radius: 12px; padding: 12px 20px; font-size: 14px; font-weight: 700; white-space: nowrap; transition: transform 0.15s ease, box-shadow 0.18s ease; display: inline-block; }
+        .add-btn { background: #FF921C; color: #fff; text-decoration: none; border-radius: 12px; padding: 12px 20px; font-size: 14px; font-weight: 700; white-space: nowrap; transition: transform 0.15s ease, box-shadow 0.18s ease; display: inline-block; }
         .add-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(248,109,28,0.3); }
         .dish-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
         .dish-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column; animation: fadeUp 0.4s ease both; transition: transform 0.18s ease, box-shadow 0.18s ease; }
@@ -68,12 +68,12 @@ export default async function DishesPage() {
         .dish-codes { font-size: 10px; color: #BBB; letter-spacing: 0.4px; }
         .dish-actions { display: flex; gap: 8px; margin-top: 8px; }
         .act-btn { flex: 1; text-align: center; font-size: 12px; font-weight: 700; padding: 8px; border-radius: 10px; cursor: pointer; text-decoration: none; border: 1.5px solid #EEE; background: #fff; color: #555; transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease; font-family: inherit; }
-        .act-btn:hover { border-color: #F86D1C; color: #F86D1C; background: #FFF8F4; }
+        .act-btn:hover { border-color: #FF921C; color: #FF921C; background: #FFFAF2; }
         .act-btn.warn:hover { border-color: #E53935; color: #E53935; background: #FFF8F8; }
         .empty { background: #fff; border: 1px dashed #E0E0E0; border-radius: 16px; padding: 44px 24px; text-align: center; animation: fadeUp 0.4s ease both; }
         .empty-title { font-size: 15px; font-weight: 800; color: #1A1A1A; margin: 10px 0 6px; }
         .empty-sub { font-size: 13px; color: #888; line-height: 1.6; }
-        .empty-sub a { color: #F86D1C; font-weight: 600; text-decoration: none; }
+        .empty-sub a { color: #FF921C; font-weight: 600; text-decoration: none; }
       `}</style>
 
       <div className="d-top">
@@ -99,7 +99,7 @@ export default async function DishesPage() {
         <div className="empty">
           <div style={{ fontSize: 34 }}>🍽️</div>
           <div className="empty-title">No dishes yet</div>
-          <div className="empty-sub">Add your first dish — it goes live on Foodoo instantly.</div>
+          <div className="empty-sub">Add your first dish — it goes live on Foodish instantly.</div>
         </div>
       ) : (
         <div className="dish-grid">
@@ -109,7 +109,7 @@ export default async function DishesPage() {
                 {d.photo_url
                   ? <img src={d.photo_url} alt={d.name} />
                   : <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#CCC" strokeWidth="1.5"/><path d="M8 12h8M12 8v8" stroke="#CCC" strokeWidth="1.5" strokeLinecap="round"/></svg>}
-                {d.is_chef_special && <span className="chef-badge">👨‍🍳 Chef's <span style={{ color: '#F86D1C' }}>Special</span></span>}
+                {d.is_chef_special && <span className="chef-badge">👨‍🍳 Chef's <span style={{ color: '#FF921C' }}>Special</span></span>}
                 {!d.is_available && <span className="off-badge">Unavailable</span>}
               </div>
               <div className="dish-body">
@@ -117,7 +117,7 @@ export default async function DishesPage() {
                 <div className="dish-cat">{d.category || '—'}</div>
                 <div className="dish-meta">
                   <div className="dish-rating">
-                    <span style={{ color: '#F86D1C' }}>★</span>
+                    <span style={{ color: '#FF921C' }}>★</span>
                     {d.avg_rating > 0 ? Number(d.avg_rating).toFixed(1) : 'New'}
                     {d.total_reviews > 0 && <span style={{ color: '#999', fontWeight: 500 }}>({d.total_reviews})</span>}
                   </div>

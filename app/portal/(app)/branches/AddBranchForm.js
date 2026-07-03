@@ -22,13 +22,13 @@ export default function AddBranchForm({ needsCode, prefix }) {
         .ab-sub { font-size: 12px; color: #999; margin-bottom: 14px; line-height: 1.5; }
         .ab-label { display: block; font-size: 12px; font-weight: 600; color: #555; margin: 13px 0 6px; }
         .ab-input { width: 100%; border: 1.5px solid #EBEBEB; border-radius: 12px; padding: 12px 13px; font-size: 14px; color: #1A1A1A; outline: none; font-family: inherit; background: #FAFAFA; transition: border-color 0.18s ease, background 0.18s ease; }
-        .ab-input:focus { border-color: #F86D1C; background: #fff; }
+        .ab-input:focus { border-color: #FF921C; background: #fff; }
         .ab-input.code { letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
-        .ab-btn { width: 100%; margin-top: 18px; background: #F86D1C; color: #fff; border: none; border-radius: 12px; padding: 13px; font-size: 14px; font-weight: 700; cursor: pointer; }
+        .ab-btn { width: 100%; margin-top: 18px; background: #FF921C; color: #fff; border: none; border-radius: 12px; padding: 13px; font-size: 14px; font-weight: 700; cursor: pointer; }
         .ab-btn:disabled { opacity: 0.6; cursor: default; }
         .ab-err { background: #FDECEA; color: #C0392B; font-size: 13px; border-radius: 10px; padding: 10px 12px; margin-top: 14px; animation: fadeUp 0.25s ease both; }
         .ab-ok { background: #E8F5E9; color: #2E7D32; font-size: 13px; border-radius: 10px; padding: 10px 12px; margin-top: 14px; animation: fadeUp 0.25s ease both; }
-        .ab-code-banner { background: #FFF3ED; border: 1px solid #FBD9C4; border-radius: 12px; padding: 10px 12px; font-size: 12px; color: #9A3B10; line-height: 1.5; margin-top: 12px; }
+        .ab-code-banner { background: #FFF5E6; border: 1px solid #FFDFAD; border-radius: 12px; padding: 10px 12px; font-size: 12px; color: #995B05; line-height: 1.5; margin-top: 12px; }
       `}</style>
 
       <div className="ab-title">{needsCode ? 'Add another branch' : 'Add your first branch'}</div>
@@ -41,7 +41,7 @@ export default function AddBranchForm({ needsCode, prefix }) {
       {needsCode && (
         <>
           <div className="ab-code-banner">
-            Need a code? Contact the Foodoo team — we prepare your branch QR codes with it.
+            Need a code? Contact the Foodish team — we prepare your branch QR codes with it.
           </div>
           <label className="ab-label" htmlFor="code">Branch code</label>
           <input className="ab-input code" id="code" name="code" placeholder={(prefix || 'FUCO') + '-653-693'} value={code} onChange={(e) => setCode(e.target.value)} required />

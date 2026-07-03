@@ -9,7 +9,7 @@ export default function HeaderAvatar() {
 
   useEffect(() => {
     try {
-      const p = JSON.parse(localStorage.getItem('foodoo_profile') || 'null')
+      const p = JSON.parse(localStorage.getItem('foodish_profile') || 'null')
       if (p && p.avatar_url) setAvatar(p.avatar_url)
     } catch {}
   }, [])
