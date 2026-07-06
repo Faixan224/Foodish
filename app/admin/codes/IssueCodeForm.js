@@ -63,6 +63,7 @@ export default function IssueCodeForm() {
       <label className="ic-label" htmlFor="kind">Type</label>
       <select className="ic-select" id="kind" name="kind" value={kind} onChange={(e) => setKind(e.target.value)}>
         <option value="signup">Signup (new restaurant + first branch)</option>
+        <option value="claim">Claim (owner takes over a seeded restaurant)</option>
         <option value="add_branch">Add branch (existing restaurant)</option>
       </select>
 
@@ -94,6 +95,11 @@ export default function IssueCodeForm() {
         <>
           <label className="ic-label" htmlFor="restaurant_id">Restaurant ID</label>
           <input className="ic-input" id="restaurant_id" name="restaurant_id" placeholder="UUID of the restaurant" value={restId} onChange={(e) => setRestId(e.target.value)} />
+          <div className="sug-hint">
+            {kind === 'claim'
+              ? 'Copy the ID from Admin → Restaurants → open the seeded restaurant (it must not have an owner yet). Its existing code prefix is kept automatically.'
+              : 'Copy the ID from Admin → Restaurants → open the restaurant.'}
+          </div>
         </>
       )}
 

@@ -110,31 +110,50 @@ export async function signupWithCode(prevState, formData) {
   if (profErr)
     return { error: 'Account created but profile setup failed. Contact support.' }
 
-  // 4. Restaurant — name + prefix come from the code (owner can't change them).
-  const slug =
-    slugify(codeRow.restaurant_name || fullName) +
-    '-' +
-    Math.random().toString(36).slice(2, 6)
-  const { data: rest, error: restErr } = await admin
-    .from('restaurants')
-    .insert({
-      name: codeRow.restaurant_name || fullName,
-      slug,
-      code_prefix: codeRow.code_prefix,
-      owner_id: userId,
-      city: 'Lahore',
-    })
-    .select('id')
-    .single()
-  if (restErr)
-    return { error: 'Account created but restaurant setup failed. Contact support.' }
+  // 4. Restaurant — a claim code (restaurant_id set) attaches the owner to the
+  //    existing seeded restaurant, so its dishes, reviews and QR token all
+  //    survive. A plain signup code creates a fresh restaurant as before.
+  let restaurantIdFinal
+  if (codeRow.restaurant_id) {
+    const { data: claimed } = await admin
+      .from('restaurants')
+      .update({ owner_id: userId })
+      .eq('id', codeRow.restaurant_id)
+      .is('owner_id', null) // guard: an already-owned restaurant can never be taken over
+      .select('id, code_prefix')
+      .maybeSingle()
+    if (!claimed)
+      return { error: 'Account created but the restaurant could not be claimed. Contact support.' }
+    if (!claimed.code_prefix)
+      await admin.from('restaurants').update({ code_prefix: codeRow.code_prefix }).eq('id', claimed.id)
+    restaurantIdFinal = claimed.id
+  } else {
+    const slug =
+      slugify(codeRow.restaurant_name || fullName) +
+      '-' +
+      Math.random().toString(36).slice(2, 6)
+    const { data: rest, error: restErr } = await admin
+      .from('restaurants')
+      .insert({
+        name: codeRow.restaurant_name || fullName,
+        slug,
+        code_prefix: codeRow.code_prefix,
+        owner_id: userId,
+        city: 'Lahore',
+      })
+      .select('id')
+      .single()
+    if (restErr)
+      return { error: 'Account created but restaurant setup failed. Contact support.' }
+    restaurantIdFinal = rest.id
+  }
 
   // 5. Burn the code.
   await admin
     .from('onboarding_codes')
     .update({
       status: 'used',
-      restaurant_id: rest.id,
+      restaurant_id: restaurantIdFinal,
       consumed_by: userId,
       used_at: new Date().toISOString(),
     })

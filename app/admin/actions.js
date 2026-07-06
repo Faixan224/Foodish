@@ -33,7 +33,12 @@ function seg() {
 export async function issueCode(prevState, formData) {
   const adminProfile = await requireAdmin() // redirects if not an admin
 
-  const kind = String(formData.get('kind') || 'signup')
+  const kindInput = String(formData.get('kind') || 'signup')
+  // "claim" = a signup code bound to an existing (seeded) restaurant: the owner
+  // account attaches to it instead of creating a new restaurant, so the seeded
+  // dishes, reviews and QR token all survive. Stored as kind='signup' + restaurant_id.
+  const isClaim = kindInput === 'claim'
+  const kind = isClaim ? 'signup' : kindInput
   const prefix = String(formData.get('code_prefix') || '')
     .trim()
     .toUpperCase()
@@ -43,17 +48,32 @@ export async function issueCode(prevState, formData) {
   const notes = String(formData.get('notes') || '').trim()
 
   if (!prefix) return { error: 'Code prefix is required (e.g. FUCO).' }
-  if (kind === 'signup' && !restaurantName)
+  if (kind === 'signup' && !isClaim && !restaurantName)
     return { error: 'Restaurant name is required for a signup code.' }
-  if (kind === 'add_branch' && !restaurantId)
-    return { error: 'Restaurant ID is required for an add-branch code.' }
+  if ((kind === 'add_branch' || isClaim) && !restaurantId)
+    return { error: 'Restaurant ID is required for this code.' }
 
   const admin = getAdminSupabase()
+
+  // A claim code must point at a real, still-unowned restaurant.
+  let claimRestaurant = null
+  if (isClaim) {
+    const { data: r } = await admin
+      .from('restaurants')
+      .select('id, name, code_prefix, owner_id')
+      .eq('id', restaurantId)
+      .maybeSingle()
+    if (!r) return { error: 'No restaurant found with that ID.' }
+    if (r.owner_id) return { error: `"${r.name}" already has an owner — it cannot be claimed.` }
+    claimRestaurant = r
+  }
+  // If the seeded restaurant already has a prefix (printed QR filenames use it), keep it.
+  const codePrefix = claimRestaurant?.code_prefix || prefix
 
   // Generate a unique code like FUCO-235-245.
   let code
   for (let i = 0; i < 8; i++) {
-    const candidate = `${prefix}-${seg()}-${seg()}`
+    const candidate = `${codePrefix}-${seg()}-${seg()}`
     const { data: exists } = await admin
       .from('onboarding_codes')
       .select('id')
@@ -69,10 +89,10 @@ export async function issueCode(prevState, formData) {
   const { error } = await admin.from('onboarding_codes').insert({
     code,
     kind,
-    code_prefix: prefix,
+    code_prefix: codePrefix,
     notes: notes || null,
-    restaurant_name: kind === 'signup' ? restaurantName : null,
-    restaurant_id: kind === 'add_branch' ? restaurantId : null,
+    restaurant_name: kind === 'signup' ? (claimRestaurant ? claimRestaurant.name : restaurantName) : null,
+    restaurant_id: kind === 'add_branch' || isClaim ? restaurantId : null,
     issued_by: adminProfile.id,
   })
   if (error) return { error: 'Could not save the code: ' + error.message }
