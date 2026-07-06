@@ -9,7 +9,7 @@ import QrCard from '../../../QrCard'
 
 export const dynamic = 'force-dynamic'
 
-const LIVE_SITE = 'https://foodoo-mocha.vercel.app'
+const LIVE_SITE = 'https://foodish.pk'
 
 export default async function AdminRestaurantDetail({ params }) {
   await requireAdmin()

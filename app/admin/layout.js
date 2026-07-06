@@ -9,7 +9,7 @@ const NAV = [
   { href: '/admin/codes', label: 'Onboarding codes' },
 ]
 
-const LIVE_SITE = 'https://foodoo-mocha.vercel.app'
+const LIVE_SITE = 'https://foodish.pk'
 
 export default async function AdminLayout({ children }) {
   const admin = await requireAdmin()

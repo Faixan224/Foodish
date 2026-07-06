@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://foodoo-mocha.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://foodish.pk"),
   title: "Foodish — Rate every Plate",
   description: "Find the best dish before you order. Discover and rate dishes — not just restaurants — at your favourite spots.",
   openGraph: {
