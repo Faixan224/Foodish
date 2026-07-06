@@ -3,7 +3,7 @@ export const metadata = {
   description: 'List your dishes on Foodish, get verified QR reviews, and grow with dish-level ratings.',
 }
 
-const EMAIL = 'faixanyasin@gmail.com'
+const EMAIL = 'hello@foodish.pk'
 const PHONE_DISPLAY = '+92 311 4424181'
 const WHATSAPP = 'https://wa.me/923114424181'
 
