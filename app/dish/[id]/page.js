@@ -1,3 +1,8 @@
+// Cached per dish and refreshed every 60s; review submits revalidate the path instantly.
+export const revalidate = 60
+// Enable ISR for on-demand paths: each dish page is rendered once, then cached.
+export async function generateStaticParams() { return [] }
+
 import { supabase } from '../../../lib/supabase'
 import { getEditorsPicks } from '../../../lib/ranking'
 import DishClient from './DishClient'

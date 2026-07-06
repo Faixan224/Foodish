@@ -1,7 +1,8 @@
 import { supabase } from '../../lib/supabase'
 import SaveButton from '../SaveButton'
 
-export const dynamic = 'force-dynamic'
+// Cached at the edge and refreshed every 60s — public pages don't need per-request DB reads.
+export const revalidate = 60
 
 async function getAllDishes() {
   const { data } = await supabase

@@ -1,6 +1,7 @@
 'use server'
 
 import { cookies } from 'next/headers'
+import { revalidatePath } from 'next/cache'
 import { getAdminSupabase } from '../../lib/supabase-admin'
 import { verifyToken, QR_COOKIE } from '../../lib/qr'
 
@@ -63,5 +64,7 @@ export async function submitReview(input) {
     // The fraud trigger raises friendly messages ("once a week", "3 per day"…).
     return { error: error.message || 'Could not submit your review.' }
   }
+  // Bust the ISR cache so the reviewer sees their own review immediately.
+  revalidatePath('/dish/' + dish.id)
   return { ok: true, verified: isVerified }
 }

@@ -3,8 +3,8 @@ import { getEditorsPicks } from '../lib/ranking'
 import SaveButton from './SaveButton'
 import HeaderAvatar from './HeaderAvatar'
 
-// Render on every request so newly submitted reviews are reflected immediately.
-export const dynamic = 'force-dynamic'
+// Cached at the edge and refreshed every 60s — public pages don't need per-request DB reads.
+export const revalidate = 60
 
 async function getTopDishes() {
   return getEditorsPicks(supabase)
