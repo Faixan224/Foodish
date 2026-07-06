@@ -1,7 +1,5 @@
-// Cached per restaurant and refreshed every 60s.
-export const revalidate = 60
-// Enable ISR for on-demand paths: each restaurant page is rendered once, then cached.
-export async function generateStaticParams() { return [] }
+// Stays dynamic: the category filter reads searchParams, which a cached
+// (ISR) page cannot do — caching this page 500s in production.
 
 import { supabase } from '../../../lib/supabase'
 import { MIN_RANK_REVIEWS, getEditorsPicks } from '../../../lib/ranking'
