@@ -59,7 +59,16 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
   const [myAvatar, setMyAvatar] = useState('')
   const [wasVerified, setWasVerified] = useState(false)
   const [qrVisit, setQrVisit] = useState(null) // { n: restaurant, br: branch } from the scan hint cookie
+  const [descExpanded, setDescExpanded] = useState(false)
+  const [descOverflows, setDescOverflows] = useState(false)
+  const descRef = useRef(null)
   const photoInputRef = useRef(null)
+
+  // Show "Read more" only when the clamped description actually overflows one line.
+  useEffect(() => {
+    const el = descRef.current
+    if (el) setDescOverflows(el.scrollHeight > el.clientHeight + 1)
+  }, [])
 
   // Lock the page scroll while the review sheet or photo lightbox is open,
   // so the dish page doesn't scroll behind the panel.
@@ -282,6 +291,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
         .pill-label { font-size: 10px; color: #999; margin-top: 1px; }
         .pill-value { font-size: 13px; font-weight: 700; color: #1A1A1A; }
         .desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 6px; }
+        .desc.clamped { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
         .read-more { font-size: 14px; color: #FF921C; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 20px; display: block; }
         .divider { height: 8px; background: #F7F7F7; margin: 0 -20px 22px; }
         .sec-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
@@ -476,7 +486,16 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
             )}
           </div>
 
-          {dish.description && <><p className="desc">{dish.description}</p><button className="read-more">Read more</button></>}
+          {dish.description && (
+            <>
+              <p ref={descRef} className={'desc' + (descExpanded ? '' : ' clamped')}>{dish.description}</p>
+              {descOverflows && (
+                <button className="read-more" onClick={() => setDescExpanded((v) => !v)}>
+                  {descExpanded ? 'Read less' : 'Read more'}
+                </button>
+              )}
+            </>
+          )}
           <div className="divider"></div>
 
           <div style={{ marginBottom: 24 }}>
