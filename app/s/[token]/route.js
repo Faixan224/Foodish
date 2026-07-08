@@ -21,6 +21,14 @@ export async function GET(request, { params }) {
     return NextResponse.redirect(new URL('/', base))
   }
 
+  // Log the scan for the activity dashboards (fire-and-forget).
+  await admin.from('page_views').insert({
+    visitor: null,
+    path: '/s/scan',
+    is_scan: true,
+    restaurant_id: qr.branches?.restaurant_id || null,
+  })
+
   const slug = qr.branches?.restaurants?.slug
   const dest = new URL('/restaurant/' + (slug || ''), base)
   dest.searchParams.set('verified', '1')

@@ -1,10 +1,14 @@
 import { requireOwner } from '../../../lib/dal'
 import { getServerSupabase } from '../../../lib/supabase-server'
+import { getAdminSupabase } from '../../../lib/supabase-admin'
+import { RANGES, normalizeRange, restaurantActivity } from '../../../lib/metrics'
 
 export const dynamic = 'force-dynamic'
 
-export default async function PortalDashboard() {
+export default async function PortalDashboard({ searchParams }) {
   const user = await requireOwner()
+  const sp = await searchParams
+  const range = normalizeRange(sp?.range)
 
   // NOTE: filter by owner_id explicitly — the public-read RLS policy means an
   // authenticated user can see ALL active restaurants, so maybeSingle() without
@@ -19,6 +23,7 @@ export default async function PortalDashboard() {
   let branchCount = 0
   let dishCount = 0
   let analytics = null
+  let traffic = null
   if (restaurant) {
     const [b, d] = await Promise.all([
       supabase.from('branches').select('id, name').eq('restaurant_id', restaurant.id),
@@ -28,6 +33,10 @@ export default async function PortalDashboard() {
     const dishes = d.data || []
     branchCount = branches.length
     dishCount = dishes.length
+
+    // Traffic metrics come from page_views, which only the service role can
+    // read — scoped strictly to this owner's restaurant id.
+    traffic = await restaurantActivity(getAdminSupabase(), restaurant.id, dishes.map((x) => x.id), range)
 
     // Review analytics: last 60 days across all own dishes, computed in JS
     // (small volumes; move to a DB view if this ever gets heavy).
@@ -116,6 +125,12 @@ export default async function PortalDashboard() {
         .stat-val { font-size: 26px; font-weight: 900; color: #1A1A1A; }
         .stat-lbl { font-size: 12px; color: #999; margin-top: 3px; }
         .an-title { font-size: 16px; font-weight: 800; color: #1A1A1A; margin: 4px 0 12px; animation: fadeUp 0.4s ease 0.08s both; }
+        .tr-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; animation: fadeUp 0.4s ease 0.08s both; }
+        .tr-pill { font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; border: 1.5px solid #E8E8E8; background: #fff; color: #666; text-decoration: none; }
+        .tr-pill:hover { border-color: #FF921C; color: #FF921C; }
+        .tr-pill.on { background: #FF921C; border-color: #FF921C; color: #fff; }
+        .tr-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 26px; }
+        @media (max-width: 1000px) { .tr-row { grid-template-columns: repeat(2, 1fr); } }
         .an-windows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
         @media (max-width: 900px) { .an-windows { grid-template-columns: 1fr; } }
         .an-card { background: #fff; border: 1px solid #EEE; border-radius: 14px; padding: 16px 18px; animation: fadeUp 0.4s ease 0.1s both; transition: transform 0.18s ease, box-shadow 0.18s ease; }
@@ -183,6 +198,41 @@ export default async function PortalDashboard() {
               <div className="stat-lbl">Dishes →</div>
             </a>
           </div>
+
+          {traffic && (
+            <>
+              <div className="an-title">Traffic</div>
+              <div className="tr-pills">
+                {RANGES.map((r) => (
+                  <a key={r.key} href={'/portal?range=' + r.key} className={'tr-pill' + (range === r.key ? ' on' : '')}>
+                    {r.label}
+                  </a>
+                ))}
+              </div>
+              <div className="tr-row">
+                <div className="stat">
+                  <div className="stat-val">{traffic.visitors}</div>
+                  <div className="stat-lbl">Visitors</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-val">{traffic.menuViews}</div>
+                  <div className="stat-lbl">Menu &amp; dish views</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-val">{traffic.scans}</div>
+                  <div className="stat-lbl">QR scans</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-val">{traffic.reviews}</div>
+                  <div className="stat-lbl">Reviews</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-val">{traffic.verified}</div>
+                  <div className="stat-lbl">Verified reviews</div>
+                </div>
+              </div>
+            </>
+          )}
 
           {analytics && (
             <>
