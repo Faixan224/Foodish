@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../../../lib/supabase'
 import { submitReview as submitReviewAction } from '../../actions/review'
+import ShareButton from '../../ShareButton'
 
 const StarRating = ({ value, onChange, size = 32, showLabel = false }) => {
   const [hovered, setHovered] = useState(0)
@@ -398,11 +399,7 @@ export default function DishClient({ dish, reviews, similarDishes, rank }) {
             </svg>
           </a>
           <div className="top-right">
-            <button className="icon-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+            <ShareButton title={dish.name + ' — rate it on Foodish'} />
             <button className="icon-btn" onClick={toggleSave}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill={isSaved ? '#E53935' : 'none'}>
                 <path d="M12 21C12 21 3 14 3 8a5 5 0 019-3 5 5 0 019 3c0 6-9 13-9 13z" stroke="#E53935" strokeWidth="2"/>

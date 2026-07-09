@@ -4,6 +4,7 @@
 import { supabase } from '../../../lib/supabase'
 import { MIN_RANK_REVIEWS, getEditorsPicks } from '../../../lib/ranking'
 import BackButton from './BackButton'
+import ShareButton from '../../ShareButton'
 
 async function getRestaurant(slug) {
   const { data } = await supabase
@@ -144,11 +145,7 @@ export default async function RestaurantPage({ params, searchParams }) {
       <div className="page">
         <div className="top-bar">
           <BackButton />
-          <button className="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          <ShareButton title={restaurant.name + ' on Foodish — Rate every Plate'} />
         </div>
 
         <div className="hero">
