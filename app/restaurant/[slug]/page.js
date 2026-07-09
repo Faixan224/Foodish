@@ -37,8 +37,9 @@ async function getRestaurantDishes(restaurantId) {
 
 async function getTopDishIds() {
   const picks = await getEditorsPicks(supabase, { columns: 'id' })
-  // Rank = position in the Editor's Picks list; shown wherever the dish appears.
-  return picks.map((d, i) => ({ id: d.id, rank: i + 1 }))
+  // Only dishes that actually earned a rank (>= MIN_RANK_REVIEWS) get a "#N"
+  // badge; grid fillers don't. Ranked picks come first in the list, so index = rank.
+  return picks.filter((d) => d._ranked).map((d, i) => ({ id: d.id, rank: i + 1 }))
 }
 
 export default async function RestaurantPage({ params, searchParams }) {
