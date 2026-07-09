@@ -40,3 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /public/Restaurent Dishes/
+# Large original dish PNGs (source only — served webp live under public/dishes/basil-co-by-sara/)
+/public/dishes/basil co by sara/
