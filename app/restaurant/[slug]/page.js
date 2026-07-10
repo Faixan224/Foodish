@@ -5,6 +5,7 @@ import { supabase } from '../../../lib/supabase'
 import { MIN_RANK_REVIEWS, getEditorsPicks } from '../../../lib/ranking'
 import BackButton from './BackButton'
 import ShareButton from '../../ShareButton'
+import MenuSection from './MenuSection'
 
 async function getRestaurant(slug) {
   const { data } = await supabase
@@ -101,6 +102,13 @@ export default async function RestaurantPage({ params, searchParams }) {
         .divider { height: 8px; background: #F5F5F5; margin: 0 -20px 20px; }
         .section { padding: 0 20px; margin-bottom: 28px; }
         .section-title { font-size: 17px; font-weight: 800; color: #1A1A1A; margin-bottom: 14px; }
+        .menu-search { display: flex; align-items: center; gap: 10px; background: #fff; border: 1.5px solid #E8E8E8; border-radius: 50px; padding: 10px 16px; margin-bottom: 14px; }
+        .menu-search:focus-within { border-color: #FF921C; }
+        .menu-search svg { flex-shrink: 0; }
+        .menu-search input { flex: 1; border: none; outline: none; background: transparent; font-size: 14px; color: #1A1A1A; font-family: inherit; min-width: 0; }
+        .menu-search input::placeholder { color: #AAA; }
+        .menu-search input::-webkit-search-cancel-button { display: none; }
+        .menu-search-clear { border: none; background: #F5F5F5; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
         .cat-filter { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 16px; }
         .cat-filter::-webkit-scrollbar { display: none; }
         .cat-btn { padding: 6px 14px; border-radius: 50px; border: 1.5px solid #E8E8E8; background: #fff; font-size: 13px; font-weight: 500; color: #555; cursor: pointer; white-space: nowrap; flex-shrink: 0; font-family: inherit; text-decoration: none; display: inline-block; }
@@ -186,59 +194,13 @@ export default async function RestaurantPage({ params, searchParams }) {
           <div className="divider"></div>
         </div>
 
-        <div className="section">
-          <div className="section-title">Menu ({dishes.length} dishes)</div>
-          {categories.length > 1 && (
-            <div className="cat-filter">
-              <a href={`/restaurant/${slug}`} className={'cat-btn' + (!selectedCat ? ' active' : '')}>All</a>
-              {categories.map(cat => (
-                <a key={cat} href={`/restaurant/${slug}?cat=${cat}`} className={'cat-btn' + (selectedCat === cat ? ' active' : '')}>{cat}</a>
-              ))}
-            </div>
-          )}
-          {dishes.length === 0 ? (
-            <div className="empty">No dishes found</div>
-          ) : (
-            <div className="dish-grid">
-              {dishes.map((dish) => (
-                <a key={dish.id} href={'/dish/' + dish.id} className="dish-card">
-                  <div className="dish-img-wrap">
-                    {dish.photo_url
-                      ? <img src={dish.photo_url} alt={dish.name} loading="lazy"/>
-                      : <div className="dish-img-ph">
-                          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="9" stroke="#CCC" strokeWidth="1.5"/>
-                          </svg>
-                        </div>
-                    }
-                    {(rankMap[dish.id] || dish.is_chef_special) && (
-                      <div className="badge-col">
-                        {rankMap[dish.id] && (
-                          <div className="rank-badge">#{rankMap[dish.id]} in Editor's Picks</div>
-                        )}
-                        {dish.is_chef_special && (
-                          <div className="chef-badge">👨‍🍳 Chef's <span className="sp">Special</span></div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <div className="dish-info">
-                    <div className="dish-name">{dish.name}</div>
-                    <div className="dish-rating-row">
-                      <span className="dish-stars">★</span>
-                      <span className="dish-rating-val">{dish.avg_rating > 0 ? dish.avg_rating.toFixed(1) : 'New'}</span>
-                      <span className="dish-rating-count">({dish.total_reviews})</span>
-                    </div>
-                    <div className="dish-footer">
-                      {dish.category && <span className="dish-category-tag">{dish.category}</span>}
-                      {dish.price && <span className="dish-price">Rs. {dish.price}</span>}
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
+        <MenuSection
+          dishes={dishes}
+          categories={categories}
+          selectedCat={selectedCat}
+          slug={slug}
+          rankMap={rankMap}
+        />
       </div>
 
       <nav className="bottom-nav">
