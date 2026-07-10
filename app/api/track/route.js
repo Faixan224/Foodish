@@ -12,6 +12,13 @@ export async function POST(request) {
     return new NextResponse(null, { status: 400 })
   }
 
+  // Defense-in-depth: drop beacons that didn't come from the real site
+  // (dev/preview hosts) so localhost testing never pollutes the analytics.
+  const origin = request.headers.get('origin') || request.headers.get('referer') || ''
+  if (/localhost|127\.0\.0\.1|\.local|\.vercel\.app/.test(origin)) {
+    return new NextResponse(null, { status: 204 })
+  }
+
   const visitor = String(body?.v || '').slice(0, 64)
   const path = String(body?.p || '').slice(0, 200)
   if (!/^[\w-]{8,64}$/.test(visitor) || !path.startsWith('/')) {

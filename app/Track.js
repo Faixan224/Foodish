@@ -11,6 +11,10 @@ export default function Track() {
 
   useEffect(() => {
     if (!pathname || pathname.startsWith('/portal') || pathname.startsWith('/admin')) return
+    // Never record dev/preview traffic — keeps localhost testing out of the
+    // real analytics (this app's .env points at the production database).
+    const host = window.location.hostname
+    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local') || host.endsWith('.vercel.app')) return
     let vid
     try {
       vid = localStorage.getItem('foodish_vid')
