@@ -1,5 +1,5 @@
 {
-  "restaurant": { "name": "Basil Co By Sara", "slug": "basil-co-by-sara" },
+  "restaurant": { "name": "Basilico by Sara", "slug": "basil-co-by-sara" },
   "_note": "Real Basilico Caffe menu. `img` = source PNG filename under public/dishes/basil co by sara/. Compressed to webp by scripts/seed-basil-co.js into public/dishes/basil-co-by-sara/<slug>.webp. price = display price (lower option for variants); priceMax set when two options exist.",
   "dishes": [
     { "name": "Smoothies", "category": "Cold Drinks", "price": 850, "desc": "strawberry cheesecake / strawberry banana / mango coconut / berrylicious dream" },
