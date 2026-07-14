@@ -128,7 +128,7 @@ export default async function RestaurantPage({ params, searchParams }) {
         .dish-stars { color: #FF921C; font-size: 14px; }
         .dish-rating-val { font-size: 14px; font-weight: 800; color: #1A1A1A; }
         .dish-rating-count { font-size: 12px; color: #999; }
-        .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+        .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; }
         .dish-category-tag { background: #FFF5E6; color: #FF921C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
         .dish-price { font-size: 14px; color: #1A1A1A; font-weight: 900; }
         .empty { text-align: center; padding: 40px; color: #BBB; font-size: 14px; }

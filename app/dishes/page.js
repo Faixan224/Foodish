@@ -42,7 +42,7 @@ export default async function DishesPage() {
         .dish-rating-count { font-size: 12px; color: #999; }
         .dish-rest-dot { font-size: 12px; color: #CCC; margin: 0 2px; }
         .dish-rest-name { font-size: 12px; color: #999; }
-        .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+        .dish-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; }
         .dish-category-tag { background: #FFF5E6; color: #FF921C; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
         .dish-price { font-size: 14px; color: #1A1A1A; font-weight: 900; }
         .dish-save-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
